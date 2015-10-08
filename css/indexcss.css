@@ -95,6 +95,17 @@ a:hover {
 #postJobBox{
 	margin: 0, auto; 
 	top:60%;
+    left:40%;
+	padding: 20px;
+	position: absolute; 
+	background: white; 
+	border: solid rgb(119, 197,235) 2px; 
+	z-index: 9; 
+}
+
+#registerBox{
+	margin: 0, auto; 
+	top:45%;
     left:45%;
 	padding: 20px;
 	position: absolute; 

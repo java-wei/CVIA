@@ -31,7 +31,6 @@
     </div>
 
     <div id="postJobBox" style="display:none;"> 
-
         <center>Job Name:</center>
         <center><input name="username" size="14" /></center>
         <center>Job Description:</center>
@@ -39,7 +38,19 @@
         <input type="file" id="myJob" multiple id="SubmitCVButton" onchange="myFunctionJob()" style="display:none;">
         <hr>
         <center><input type="submit" name="submit" value="Post" /></center>
-        
+    </div>
+
+    <div id="registerBox" style="display:none;"> 
+        <form name="register" action="" method="post">
+        <center>Username:</center>
+        <center><input name="username" size="14" /></center>
+        <center>Email:</center>
+        <center><input name="email" type="email" size="14" /></center>
+        <center>Password:</center>
+        <center><input name="password" type="password" size="14" /></center>
+        <hr>
+        <center><input type="submit" name="submit" value="Register" /></center>
+        </form>
     </div>
 
     <div id="wrapper">
@@ -83,6 +94,10 @@
     <script>
       $("#LoginButton").click(function() {
         $("#loginBox").show();
+      });
+
+      $("#RegisterButton").click(function() {
+        $("#registerBox").show();
       });
  
       $("#UploadJobButton").click(function() {
