@@ -1,0 +1,104 @@
+body {
+  background-color: rgb(119, 197,235);
+  text-align: center;
+}
+
+#wrapper {
+	width: 70%;
+	min-width: 900px;
+	margin: 0 auto;
+}
+
+hr {
+	width: 3px;
+	color: white;
+	width: 100%;
+}
+
+.header {
+	padding-top: 20px;
+	padding-bottom: 10px; 
+	width: 100%;
+	vertical-align: middle;
+}
+
+.logoSection {
+	text-align: left;
+	vertical-align: top;
+	height: 100%;
+	color: white;
+}
+
+.tabSection {
+}
+
+.column {
+    float: left;
+    padding: 0 15px;
+}
+
+.span_4 {
+    width: 33.3333%;
+}
+
+.span_8 {
+    width: 66.6667%;
+}
+
+a {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+a:hover {
+	background-color: black;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.buttons {
+	margin-top: 15px;
+	text-align: right;
+}
+
+#LoginButton, #RegisterButton {
+	margin-left: 10px;
+	border: none;
+}
+
+.tabs {
+	padding-top: 30px;
+	height: 69px;
+	float: left;
+	margin: 0 auto;
+}
+
+#popupbox{
+	margin: 0, auto; 
+	top:45%;
+    left:45%;
+	padding: 20px;
+	position: absolute; 
+	background: white; 
+	border: solid rgb(119, 197,235) 2px; 
+	z-index: 9; 
+}
+
+#postJobBox{
+	margin: 0, auto; 
+	top:60%;
+    left:45%;
+	padding: 20px;
+	position: absolute; 
+	background: white; 
+	border: solid rgb(119, 197,235) 2px; 
+	z-index: 9; 
+}
