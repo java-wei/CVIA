@@ -27,8 +27,8 @@ class DBConnection {
         }
     }
 
-    function selectUser($index) {
-        $sql = "SELECT * FROM Users where user_id = $index";
+    function selectMember($index) {
+        $sql = "SELECT * FROM members where memberID = $index";
         $result = $this->conn->query($sql);
         if ($result->num_rows == 0) {
             return "0 result";
@@ -77,8 +77,8 @@ class DBConnection {
     }
 
     function addUser($user) {
-        $sql = "INSERT INTO Users (email, password, first_name, last_name, gender)
-                VALUES ($user->email, $user->password, $user->first_name, $user->last_name, $user->gender);";
+        $sql = "INSERT INTO Users (username, password, email, active, resetToken, resetComplete)
+                VALUES ($user->username, $user->password, $user->email, $user->active, $user->resetToken, $user->resetComplete);";
         $result = $this->conn->query($sql);
         
         if ($result === TRUE) {
