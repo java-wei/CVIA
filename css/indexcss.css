@@ -148,7 +148,7 @@ a:hover {
     height:25em;
     margin-top: -9em; /*set to a negative number 1/2 of your height*/
     margin-left: -15em; /*set to a negative number 1/2 of your width*/
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(236, 247, 255, 1);
     box-shadow: 8px 8px 8px rgba(4, 52, 92, 0.5);
 
 	-moz-border-radius: 20px;
@@ -157,12 +157,14 @@ a:hover {
 }
 
 #registerBox {
-	top: 40%;
-	height: 35em;
+	top: 35%;
+	height: 30em;
 }
 
 #blockMask {
-	color: rgba(0, 0, 0, 0.5);
-	height: 100%;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.4); 
+	display: block;
+	height: 100%; 
 	width: 100%;
 }
