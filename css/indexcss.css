@@ -158,8 +158,8 @@ tabSection a:hover {
 }
 
 #registerBox {
-	top: 35%;
-	height: 30em;
+	top: 37%;
+	height: 28em;
 }
 
 #blockMask {
@@ -175,11 +175,11 @@ tabSection a:hover {
 	padding-top: 20px;
 }
 
-.selfIntroduction table{
+.selfIntroduction table {
 	margin-top: 50px;
 }
 
-.selfIntroduction table tr{
+.selfIntroduction table tr {
 	height: 150px;
 	width: 400px;
 }
@@ -197,19 +197,22 @@ tabSection a:hover {
 }
 
 
-
 .selfIntroduction table tr td:first-child {
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.6);
     border: 1px solid white;
 }
 
 .selfIntroduction table tr td:last-child {
+	background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid white;
+}
+
+.selfIntroduction .oneSentence {
+	color: white;
 }
 
 /* jobPortal.html */
 .jobTable {
-	
 	margin: 0 auto;
 }
 
