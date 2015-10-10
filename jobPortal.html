@@ -48,10 +48,6 @@
               <td class="inputBox"><input name="jobname" size="14"/></td>
             </tr>
             <tr>
-              <td class="inputLabel">Company:</td>
-              <td class="inputBox"><input name="jobCompany" size="14"/></td>
-            </tr>
-            <tr>
               <td class="inputLabel">Job Description:</td>
               <td><button id="uploadDescriptionButton" type="button" class="btn btn-default btn-lg" style="width: 80%;">Upload Job Description</button></td>
             </tr>
@@ -95,8 +91,8 @@
         </div>
         <div class="tabSection span_8 column">
           <div class="tabs">
-            <a href="#" style="color:rgb(7, 68, 119);">Home Page</a>
-            <a href="jobPortal.html">Job Portal</a>
+            <a href="index.html">Home Page</a>
+            <a href="#" style="color:rgb(7, 68, 119);">Job Portal</a>
             <a href="aboutUs.html">About Us</a>
           </div>
           <div class="buttons">
@@ -108,10 +104,29 @@
 
       <hr>
 
-      <div class="banner">
-       <button id="UploadCVButton" type="button" class="btn btn-default btn-lg">Upload CV</button>
-       <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
-       <button id="UploadJobButton" type="button" class="btn btn-default btn-lg">Post Job</button>
+      <div class="jobListPane">
+        <div class="jobList">
+          <table class="jobTable">
+            <tr class="tableLabel">
+              <td class="jobTitle">POSITION</td>
+              <td class="jobCompany">COMPANY</td>
+              <td class="jobDescription">DESCRIPTION</td>
+              <td class="jobStatus">STATUS</td>
+            </tr>
+            <tr class="jobEntry oddLine">
+              <td class="jobTitle"><a href="#">Web Developer</a></td>
+              <td class="jobCompany">National University of Singapore</td>
+              <td class="jobDescription">Common entry-level job titles in Web development include Web designer, webmaster and graphic artist. Increased education and work experience can lead to advanced positions such as senior Web developer, designer and software designer. The U.S. Bureau of Labor Statistics (BLS) forecast that careers in Web development would grow by 20% from 2012-2022, which was faster than average (www.bls.gov). Web developers with programming and multimedia expertise should have the best job prospects. As of May 2013, the mean annual wage for Web developers was $67,540, according to the BLS.</td>
+              <td class="jobStatus"><button class="applyButton btn btn-default btn-lg" type="button" >Apply</button></td>
+            </tr>
+            <tr class="jobEntry evenLine">
+              <td class="jobTitle"><a href="#">Web Designer</a></td>
+              <td class="jobCompany">Garena Online</td>
+              <td class="jobDescription">Passionate in Mobile Applications, Mobile OS and Web technologies. Technical knowledge in Objective C, C++, and/or HTML5 Javascript, Python. Experience with web service integration (JSON, XML, SOAP, REST) will be added advantage. Team Player and able to work independently with little supervision, we love go­getters! Good communication skills, working attitude and interpersonal skills.</td>
+              <td class="jobStatus"><button class="applyButton btn btn-default btn-lg" type="button">Apply</button></td>
+            </tr>
+          </table>
+        </div>
       </div>
 
       <hr>

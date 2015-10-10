@@ -25,40 +25,63 @@
         <form name="login" action="" method="post">
           <table class="popupFormTable">
             <tr>
-              <td>Username:</td>
-              <td><input name="username" size="14" /></td>
+              <td class="inputLabel">Username:</td>
+              <td class="inputBox"><input name="username" size="14"/></td>
             </tr>
             <tr>
-              <td>Password:</td>
-              <td><input name="password" type="password" size="14" /></td>
+              <td class="inputLabel">Password:</td>
+              <td class="inputBox"><input name="password" type="password" size="14"/></td>
             </tr>
           </table>
         <hr>
-        <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="login" /></center>
+        <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Login" id="loginSubmitButton"/></center>
         </form>
     </div>
 
     <div id="postJobBox" style="display:none;"> 
-        <center>Job Name:</center>
-        <center><input name="username" size="14" /></center>
-        <center>Job Description:</center>
-        <center><button id="uploadDescriptionButton" type="button" class="btn btn-default btn-lg">Upload Job Description</button></center>
-        <input type="file" id="myJob" multiple id="SubmitCVButton" onchange="myFunctionJob()" style="display:none;">
+        <p class="popupHead">Post New Job</p>
         <hr>
-        <center><input type="submit" name="submit" value="Post" /></center>
+        <form name="login" action="" method="post">
+          <table class="popupFormTable">
+            <tr>
+              <td class="inputLabel">Job Name:</td>
+              <td class="inputBox"><input name="jobname" size="14"/></td>
+            </tr>
+            <tr>
+              <td class="inputLabel">Job Description:</td>
+              <td><button id="uploadDescriptionButton" type="button" class="btn btn-default btn-lg" style="width: 80%;">Upload Job Description</button></td>
+            </tr>
+          </table>
+        <input type="file" id="myJob" multiple onchange="myFunctionJob()" style="display:none;">
+        <hr>
+        <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Post" id="jobSubmitButton"/></center>
+      </form>
     </div>
 
     <div id="registerBox" style="display:none;"> 
-        <form name="register" action="" method="post">
-        <center>Username:</center>
-        <center><input name="username" size="14" /></center>
-        <center>Email:</center>
-        <center><input name="email" type="email" size="14" /></center>
-        <center>Password:</center>
-        <center><input name="password" type="password" size="14" /></center>
+        <p class="popupHead">Register</p>
         <hr>
-        <center><input type="submit" name="submit" value="Register" /></center>
+        <form name="register" action="" method="post">
+          <table class="popupFormTable">
+            <tr>
+              <td class="inputLabel">Username:</td>
+              <td class="inputBox"><input name="username" size="14"/></td>
+            </tr>
+            <tr>
+              <td class="inputLabel">Email:</td>
+              <td class="inputBox"><input name="email" type="email" size="14" /></td>
+            </tr>
+            <tr>
+              <td class="inputLabel">Password:</td>
+              <td class="inputBox"><input name="password" type="password" size="14"/></td>
+            </tr>
+          </table>
+        <hr>
+        <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Register" id="registerSubmitButton"/></center>
         </form>
+    </div>
+
+    <div id="blockMask" style="display: none;">
     </div>
 
     <div id="wrapper">
@@ -69,7 +92,7 @@
         <div class="tabSection span_8 column">
           <div class="tabs">
             <a href="index.html">Home Page</a>
-            <a href="#">Job Portal</a>
+            <a href="jobPortal.html">Job Portal</a>
             <a href="#" style="color:rgb(7, 68, 119);">About Us</a>
           </div>
           <div class="buttons">
@@ -81,7 +104,22 @@
 
       <hr>
 
-      <div class="banner">
+      <div class="selfIntroduction">
+        <p>The CViA website is developed by three Year-4 computer-science students from National Unversotity of Singapore(NUS).</p>
+        <table>
+          <tr>
+            <td class="name"><p>Cheng Yingjie</p></td>
+            <td class="description"><p>People find me to be an upbeat, self-motivated team player with excellent communication skills. For the past several years I have worked in lead qualification, telemarketing, and customer service in the technology industry. My experience includes successfully calling people in director-level positions of technology departments and developing viable leads. I have a track record of maintaining a consistent call and activity volume and consistently achieving the top 10 percent in sales, and I can do the same thing for your company.</p></td>
+          </tr>
+          <tr>
+            <td class="name"><p>Wen Yiran</p></td>
+            <td class="description"><p>I am a dedicated person with a family of four. I enjoy reading, and the knowledge and perspective that my reading gives me has strengthened my teaching skills and presentation abilities. I have been successful at raising a family, and I attribute this success to my ability to plan, schedule, and handle many different tasks at once. This flexibility will help me in the classroom, where there are many different personalities and learning styles.</p></td>
+          </tr>
+          <tr>
+            <td class="name"><p>Zhang Chengwei</p></td>
+            <td class="description"><p>People find me to be an upbeat, self-motivated team player with excellent communication skills. For the past several years I have worked in lead qualification, telemarketing, and customer service in the technology industry. My experience includes successfully calling people in director-level positions of technology departments and developing viable leads. I have a track record of maintaining a consistent call and activity volume and consistently achieving the top 10 percent in sales, and I can do the same thing for your company.</p></td>
+          </tr>
+        </table>
       </div>
 
       <hr>
@@ -95,92 +133,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/indexjs.js"></script>
 
-    <script>
-      $("#LoginButton").click(function() {
-        $("#loginBox").fadeIn("slow");
-      });
-
-      $("#RegisterButton").click(function() {
-        $("#registerBox").fadeIn("slow");
-      });
- 
-      $("#UploadJobButton").click(function() {
-        $("#postJobBox").fadeIn("slow");
-      });
-
-      $("#uploadDescriptionButton").click(function() {
-        $("#myJob").trigger('click');
-      });
-
-      $("#SubmitCVButton").click(function() {
-        $("#myFile").trigger('click');
-      });
-
-      function myFunctionCV(){
-        var x = document.getElementById("myFile");
-        var txt = "";
-        if ('files' in x) {
-            if (x.files.length == 0) {
-                txt = "Select one or more files.";
-            } else {
-                for (var i = 0; i < x.files.length; i++) {
-                    txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-                    var file = x.files[i];
-                    if ('name' in file) {
-                        txt += "name: " + file.name + "<br>";
-                    }
-                    if ('size' in file) {
-                        txt += "size: " + file.size + " bytes <br>";
-                    }
-                }
-            }
-        } 
-        else {
-            if (x.value == "") {
-                txt += "Select one or more files.";
-            } else {
-                txt += "The files property is not supported by your browser!";
-                txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
-            }
-        }
-        document.getElementById("demo").innerHTML = txt;
-      }
-
-      function myFunctionJob(){
-        var x = document.getElementById("myJob");
-        var txt = "";
-        if ('files' in x) {
-            if (x.files.length == 0) {
-                txt = "Select one or more files.";
-            } else {
-                for (var i = 0; i < x.files.length; i++) {
-                    txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-                    var file = x.files[i];
-                    if ('name' in file) {
-                        txt += "name: " + file.name + "<br>";
-                    }
-                    if ('size' in file) {
-                        txt += "size: " + file.size + " bytes <br>";
-                    }
-                }
-            }
-        } 
-        else {
-            if (x.value == "") {
-                txt += "Select one or more files.";
-            } else {
-                txt += "The files property is not supported by your browser!";
-                txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
-            }
-        }
-        document.getElementById("demo").innerHTML = txt;
-    }
-
-    </script>
-  </body>
-
-  <footer>
+    <footer>
     <p>copyright@ NUS CS3219 Group 5</p>
   </footer>
+  </body>
 </html>
