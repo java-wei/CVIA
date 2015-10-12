@@ -12,8 +12,7 @@ define('DBPASS','');
 define('DBNAME','cvia');
 
 //application address
-define('DIR','http://domain.com/');
-define('SITEEMAIL','noreply@domain.com');
+define('DIR','http://cvia.comze.com/');
 
 try {
 
