@@ -20,11 +20,10 @@
   </head>
   <body>
     <?php
-      $username = "root";
-      $password = "root";
-      $host = "localhost:8888";
+    require_once('includes/config.php');
 
-      $connector = mysql_connect($host,$username,$password)
+
+      $connector = mysql_connect(DBHOST,DBUSER,DBPASS)
           or die("Unable to connect");
         //echo "Connections are made successfully::";
       $selected = mysql_select_db("CViA", $connector)

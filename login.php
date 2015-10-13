@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
 	
 	if($user->login($username,$password)){ 
 		$_SESSION['username'] = $username;
-		header('Location: index.html');
+		header('Location: index.php');
 		exit;
 	
 	} else {
