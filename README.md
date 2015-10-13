@@ -1,4 +1,2 @@
-Login Register
-=============
-
-These files acompany the tutorial: [Login and Registration system with PHP](http://daveismyname.com/login-and-registration-system-with-php-bp)
+### CViA
+##### CS3219 Software Engineering Principles and Patterns - Group 5
