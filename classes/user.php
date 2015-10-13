@@ -13,10 +13,13 @@ class User extends Password{
 	private function get_user_hash($username){	
 
 		try {
-			$stmt = $this->_db->prepare('SELECT password FROM members WHERE username = :username AND active="Yes" ');
+			$stmt = $this->_db->prepare('SELECT password, memberID FROM members WHERE username = :username AND active="Yes" ');
 			$stmt->execute(array('username' => $username));
 			
 			$row = $stmt->fetch();
+
+			$_SESSION['id'] = $row['memberID'];
+
 			return $row['password'];
 
 		} catch(PDOException $e) {
