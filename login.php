@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
 	
 	if($user->login($username,$password)){ 
 		$_SESSION['username'] = $username;
-		header('Location: memberpage.php');
+		header('Location: index.html');
 		exit;
 	
 	} else {
@@ -78,7 +78,8 @@ require('layout/header.php');
 				
 				<div class="row">
 					<div class="col-xs-9 col-sm-9 col-md-9">
-						 <a href='reset.php'>Forgot your Password?</a>
+                                            <p><a href='reset.php'>Forgot your Password?</a></p>
+                                            <p><a href='signup.php'>Create Account</a></p>
 					</div>
 				</div>
 				
