@@ -23,7 +23,7 @@
     <div id="loginBox" style="display:none;"> 
         <p class="popupHead">Login</p>
         <hr>
-        <form name="login" action="" method="post">
+        <form name="login" action="login.php" method="post">
           <table class="popupFormTable">
             <tr>
               <td class="inputLabel">Username:</td>
@@ -34,9 +34,10 @@
               <td class="inputBox"><input name="password" type="password" size="14"/></td>
             </tr>
           </table>
-        <hr>
         <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Login" id="loginSubmitButton"/></center>
         </form>
+        <p class="assistantButton"><a href='reset.php'>Forgot your Password?</a></p>
+        <p class="assistantButton"><a href='signup.php'>Create Account</a></p>
     </div>
 
     <div id="postJobBox" style="display:none;"> 

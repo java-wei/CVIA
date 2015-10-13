@@ -178,6 +178,15 @@ hr {
 	width: 100%;
 }
 
+#loginSubmitButton {
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+.assistantButton {
+	margin-bottom: 5px;
+}
+
 /* aboutUs.html */
 .selfIntroduction {
 	padding-top: 20px;
