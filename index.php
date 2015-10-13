@@ -75,7 +75,10 @@
     </div>
 
     <div id="postJobBox" style="display:none;"> 
-        <p class="popupHead">Post New Job</p>
+        <div style="position: relative;">
+          <p class="popupHead">Post New Job</p>
+          <button class="cancelButton"><img src="cancel.png"></button>
+        </div>
         <hr>
         <form name="login" action="" method="post">
           <table class="popupFormTable">
@@ -99,7 +102,10 @@
     </div>
 
     <div id="registerBox" style="display:none;"> 
-        <p class="popupHead">Register</p>
+        <div style="position: relative;">
+          <p class="popupHead">Register</p>
+          <button class="cancelButton"><img src="cancel.png"></button>
+        </div>
         <hr>
         <form name="register" action="signup.php" method="post">
           <table class="popupFormTable">
