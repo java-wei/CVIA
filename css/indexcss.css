@@ -115,7 +115,7 @@ hr {
     border-radius: 4px;
 }
 
-tabSection a:hover {
+.tabSection a:hover {
     color: rgb(119, 197,235);
     background-color: white;
     text-decoration: none;

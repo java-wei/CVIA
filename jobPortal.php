@@ -19,6 +19,18 @@
     <![endif]-->
   </head>
   <body>
+    <?php
+      $username = "root";
+      $password = "root";
+      $host = "localhost:8888";
+
+      $connector = mysql_connect($host,$username,$password)
+          or die("Unable to connect");
+        //echo "Connections are made successfully::";
+      $selected = mysql_select_db("CViA", $connector)
+        or die("Unable to connect");
+    ?>  
+
     <div id="loginBox" style="display:none;"> 
         <p class="popupHead">Login</p>
         <hr>
@@ -46,10 +58,6 @@
             <tr>
               <td class="inputLabel">Job Name:</td>
               <td class="inputBox"><input name="jobname" size="14"/></td>
-            </tr>
-            <tr>
-              <td class="inputLabel">Company:</td>
-              <td class="inputBox"><input name="jobCompany" size="14"/></td>
             </tr>
             <tr>
               <td class="inputLabel">Job Description:</td>
@@ -95,8 +103,8 @@
         </div>
         <div class="tabSection span_8 column">
           <div class="tabs">
-            <a href="#" style="color:rgb(7, 68, 119);">Home Page</a>
-            <a href="jobPortal.php">Job Portal</a>
+            <a href="index.php">Home Page</a>
+            <a href="#" style="color:rgb(7, 68, 119);">Job Portal</a>
             <a href="aboutUs.html">About Us</a>
           </div>
           <div class="buttons">
@@ -108,21 +116,40 @@
 
       <hr>
 
-      <div class="banner">
-        <button id="UploadCVButton" type="button" class="btn btn-default btn-lg">Upload CV</button>
-        <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
-        <button id="UploadJobButton" type="button" class="btn btn-default btn-lg">Post Job</button>
-        <div>
-          <table>
-            <tr>
-              <td><img src="jobs.png"></td>
-              <td>
-                <div style="margin-left: 20px;">
-                  <h2 style="color: rgb(7, 68, 119); font-weight: bold;">We find the best for you!</h2>
-                  <p style="color: rgba(36, 108, 167, 0.9); ">CViA helps to find match between perfect candidates and wonderful jobs. As a job seeker, you can find you dream job here. As a HR, you might get your perfect candidate here.</p>
-                </div>
-              </td>
+      <div class="jobListPane">
+        <div class="jobList">
+          <table class="jobTable">
+            <tr class="tableLabel">
+              <td class="jobTitle">POSITION</td>
+              <td class="jobCompany">COMPANY</td>
+              <td class="jobDescription">DESCRIPTION</td>
+              <td class="jobStatus">STATUS</td>
             </tr>
+            <?php
+            $tableName = 'Job';
+            $sql = "SELECT * FROM ".$tableName;
+            $jobResult = mysql_query($sql);
+            $num_rows = mysql_num_rows($jobResult);
+            $count = 0;
+            while( $row = mysql_fetch_assoc($jobResult) ){
+              if ($count % 2 == 0) {
+                // oddLine
+                echo
+                "<tr class=\"jobEntry oddLine\">";
+              } else {
+                // evenLine
+                echo
+                "<tr class=\"jobEntry evenLine\">";
+              }
+              echo
+              "<td class=\"jobTitle\"><a href=\"#\">".$row["job_title"]."</a></td>
+              <td class=\"jobCompany\">".$row["company"]."</td>
+              <td class=\"jobDescription\">".$row["job_description"]."</td>
+              <td class=\"jobStatus\"><button class=\"applyButton btn btn-default btn-lg\" type=\"button\" >Apply</button></td>
+              </tr>";
+              $count = $count + 1;
+            }
+            ?>
           </table>
         </div>
       </div>
