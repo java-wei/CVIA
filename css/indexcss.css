@@ -134,6 +134,14 @@ hr {
 	padding-bottom: 2px;
 }
 
+#LogoutButton {
+	border: none;
+	color: white;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-color:rgb(7, 68, 119);
+}
+
 .tabs {
 	padding-top: 30px;
 	height: 69px;

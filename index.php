@@ -19,6 +19,7 @@
     <![endif]-->
   </head>
   <body>
+    <?php require_once('includes/config.php'); ?>
     <div id="loginBox" style="display:none;"> 
         <p class="popupHead">Login</p>
         <hr>
@@ -100,8 +101,14 @@
             <a href="aboutUs.html">About Us</a>
           </div>
           <div class="buttons">
-            <button id="LoginButton" type="button" class="btn btn-default btn-lg">Login</button>
-            <button id="RegisterButton" type="button" class="btn btn-default btn-lg">Register</button>
+            <?php
+              if ($user->is_logged_in()){
+                echo "<button id=\"LogoutButton\" type=\"button\" class=\"btn btn-default btn-lg\">Logout</button>";
+              } else {
+                echo "<button id=\"LoginButton\" type=\"button\" class=\"btn btn-default btn-lg\">Login</button>
+                      <button id=\"RegisterButton\" type=\"button\" class=\"btn btn-default btn-lg\">Register</button>";
+              }
+            ?>
           </div>
         </div>
       </div>

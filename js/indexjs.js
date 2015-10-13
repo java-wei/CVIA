@@ -42,6 +42,10 @@ $("#LoginButton").click(function() {
     $("#blockMask").fadeOut("slow");
   });
 
+  $("#LogoutButton").click(function() {
+    window.location.href='logout.php';
+  });
+
   function myFunctionCV(){
     var x = document.getElementById("myFile");
     var txt = "";
