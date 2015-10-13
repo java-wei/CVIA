@@ -46,6 +46,13 @@ $("#LoginButton").click(function() {
     window.location.href='logout.php';
   });
 
+  $(".cancelButton").click(function() {
+    $("#loginBox").fadeOut("slow");
+    $("#blockMask").fadeOut("slow");
+    $("#postJobBox").fadeOut("slow");
+    $("#registerBox").fadeOut("slow");
+  });
+
   function myFunctionCV(){
     var x = document.getElementById("myFile");
     var txt = "";

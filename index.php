@@ -52,7 +52,10 @@
       }
   ?>
     <div id="loginBox" style="display:none;"> 
-        <p class="popupHead">Login</p>
+        <div style="position: relative;">
+          <p class="popupHead">Login</p>
+          <button class="cancelButton"><img src="cancel.png"></button>
+        </div>
         <hr>
         <form name="login" action="login.php" method="post">
           <table class="popupFormTable">
