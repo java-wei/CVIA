@@ -21,14 +21,8 @@
   <body>
     <?php
       require_once('includes/config.php'); 
-      //check for any errors
-      if(isset($error)){
-        foreach($error as $error){
-          echo '<p class="bg-danger">'.$error.'</p>';
-        }
-      }
 
-      if(isset($_GET['action'])){
+      if(isset($_GET['action'])) {
 
         //check the action
         switch ($_GET['action']) {
@@ -50,6 +44,7 @@
         }
 
       }
+
   ?>
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">
