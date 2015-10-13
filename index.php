@@ -19,11 +19,36 @@
     <![endif]-->
   </head>
   <body>
-    <?php require_once('includes/config.php'); ?>
+    <?php
+      require_once('includes/config.php'); 
+      //check for any errors
+      if(isset($error)){
+        foreach($error as $error){
+          echo '<p class="bg-danger">'.$error.'</p>';
+        }
+      }
+
+      if(isset($_GET['action'])){
+
+        //check the action
+        switch ($_GET['action']) {
+          case 'active':
+            echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
+            break;
+          case 'reset':
+            echo "<h2 class='bg-success'>Please check your inbox for a reset link.</h2>";
+            break;
+          case 'resetAccount':
+            echo "<h2 class='bg-success'>Password changed, you may now login.</h2>";
+            break;
+        }
+
+      }
+  ?>
     <div id="loginBox" style="display:none;"> 
-        <p class="popupHead">Login</p>
+        <p class="popupHead">Please Login</p>
         <hr>
-        <form name="login" action="" method="post">
+        <form name="login" action="login.php" method="post">
           <table class="popupFormTable">
             <tr>
               <td class="inputLabel">Username:</td>
@@ -37,6 +62,8 @@
         <hr>
         <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Login" id="loginSubmitButton"/></center>
         </form>
+        <p><a href='reset.php'>Forgot your Password?</a></p>
+          <p><a href='signup.php'>Create Account</a></p>
     </div>
 
     <div id="postJobBox" style="display:none;"> 
