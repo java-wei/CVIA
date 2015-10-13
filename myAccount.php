@@ -1,3 +1,10 @@
+<?php 
+  require_once('includes/config.php'); 
+  if( !$user->is_logged_in() ){ 
+    header('Location: index.php');
+  } 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,7 +26,6 @@
     <![endif]-->
   </head>
   <body>
-    <?php require_once('includes/config.php'); ?>
     <div id="loginBox" style="display:none;"> 
         <p class="popupHead">Login</p>
         <hr>
