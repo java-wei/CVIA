@@ -20,8 +20,7 @@
   </head>
   <body>
     <?php
-    require_once('includes/config.php');
-
+      require_once('includes/config.php');
 
       $connector = mysql_connect(DBHOST,DBUSER,DBPASS)
           or die("Unable to connect");
@@ -104,11 +103,22 @@
           <div class="tabs">
             <a href="index.php">Home Page</a>
             <a href="#" style="color:rgb(7, 68, 119);">Job Portal</a>
-            <a href="aboutUs.html">About Us</a>
+            <a href="aboutUs.php">About Us</a>
+            <?php
+              if ($user->is_logged_in()){
+                echo "<a href=\"myAccount.php\">My Account</a>";
+              }
+            ?>
           </div>
           <div class="buttons">
-            <button id="LoginButton" type="button" class="btn btn-default btn-lg">Login</button>
-            <button id="RegisterButton" type="button" class="btn btn-default btn-lg">Register</button>
+             <?php
+              if ($user->is_logged_in()){
+                echo "<button id=\"LogoutButton\" type=\"button\" class=\"btn btn-default btn-lg\">Logout</button>";
+              } else {
+                echo "<button id=\"LoginButton\" type=\"button\" class=\"btn btn-default btn-lg\">Login</button>
+                      <button id=\"RegisterButton\" type=\"button\" class=\"btn btn-default btn-lg\">Register</button>";
+              }
+            ?>
           </div>
         </div>
       </div>

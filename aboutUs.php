@@ -49,10 +49,6 @@
               <td class="inputBox"><input name="jobname" size="14"/></td>
             </tr>
             <tr>
-              <td class="inputLabel">Company:</td>
-              <td class="inputBox"><input name="jobCompany" size="14"/></td>
-            </tr>
-            <tr>
               <td class="inputLabel">Job Description:</td>
               <td><button id="uploadDescriptionButton" type="button" class="btn btn-default btn-lg" style="width: 80%;">Upload Job Description</button></td>
             </tr>
@@ -96,9 +92,9 @@
         </div>
         <div class="tabSection span_8 column">
           <div class="tabs">
-            <a href="#" style="color:rgb(7, 68, 119);">Home Page</a>
+            <a href="index.php">Home Page</a>
             <a href="jobPortal.php">Job Portal</a>
-            <a href="aboutUs.php">About Us</a>
+            <a href="#" style="color:rgb(7, 68, 119);">About Us</a>
             <?php
               if ($user->is_logged_in()){
                 echo "<a href=\"myAccount.php\">My Account</a>";
@@ -106,7 +102,7 @@
             ?>
           </div>
           <div class="buttons">
-            <?php
+             <?php
               if ($user->is_logged_in()){
                 echo "<button id=\"LogoutButton\" type=\"button\" class=\"btn btn-default btn-lg\">Logout</button>";
               } else {
@@ -120,23 +116,22 @@
 
       <hr>
 
-      <div class="banner">
-        <button id="UploadCVButton" type="button" class="btn btn-default btn-lg">Upload CV</button>
-        <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
-        <button id="UploadJobButton" type="button" class="btn btn-default btn-lg">Post Job</button>
-        <div>
-          <table>
-            <tr>
-              <td><img src="jobs.png"></td>
-              <td>
-                <div style="margin-left: 20px;">
-                  <h2 style="color: rgb(7, 68, 119); font-weight: bold;">We find the best for you!</h2>
-                  <p style="color: rgba(36, 108, 167, 0.9); ">CViA helps to find match between perfect candidates and wonderful jobs. As a job seeker, you can find you dream job here. As a HR, you might get your perfect candidate here.</p>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
+      <div class="selfIntroduction">
+        <p class="oneSentence">The CViA website is developed by three Year-4 computer-science students from National Unversotity of Singapore(NUS).</p>
+        <table>
+          <tr>
+            <td class="name"><p>Cheng Yingjie</p></td>
+            <td class="description"><p>People find me to be an upbeat, self-motivated team player with excellent communication skills. For the past several years I have worked in lead qualification, telemarketing, and customer service in the technology industry. My experience includes successfully calling people in director-level positions of technology departments and developing viable leads. I have a track record of maintaining a consistent call and activity volume and consistently achieving the top 10 percent in sales, and I can do the same thing for your company.</p></td>
+          </tr>
+          <tr>
+            <td class="name"><p>Wen Yiran</p></td>
+            <td class="description"><p>I am a dedicated person with a family of four. I enjoy reading, and the knowledge and perspective that my reading gives me has strengthened my teaching skills and presentation abilities. I have been successful at raising a family, and I attribute this success to my ability to plan, schedule, and handle many different tasks at once. This flexibility will help me in the classroom, where there are many different personalities and learning styles.</p></td>
+          </tr>
+          <tr>
+            <td class="name"><p>Zhang Chengwei</p></td>
+            <td class="description"><p>People find me to be an upbeat, self-motivated team player with excellent communication skills. For the past several years I have worked in lead qualification, telemarketing, and customer service in the technology industry. My experience includes successfully calling people in director-level positions of technology departments and developing viable leads. I have a track record of maintaining a consistent call and activity volume and consistently achieving the top 10 percent in sales, and I can do the same thing for your company.</p></td>
+          </tr>
+        </table>
       </div>
 
       <hr>
