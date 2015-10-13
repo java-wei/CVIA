@@ -35,6 +35,12 @@
           case 'active':
             echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
             break;
+          case 'login' :
+            echo "<h2 class='bg-success'>Login successfully.</h2>";
+            break;
+          case 'joined' :
+            echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";
+            break;
           case 'reset':
             echo "<h2 class='bg-success'>Please check your inbox for a reset link.</h2>";
             break;
@@ -92,7 +98,7 @@
     <div id="registerBox" style="display:none;"> 
         <p class="popupHead">Register</p>
         <hr>
-        <form name="register" action="" method="post">
+        <form name="register" action="signup.php" method="post">
           <table class="popupFormTable">
             <tr>
               <td class="inputLabel">Username:</td>
@@ -105,6 +111,10 @@
             <tr>
               <td class="inputLabel">Password:</td>
               <td class="inputBox"><input name="password" type="password" size="14"/></td>
+            </tr>
+            <tr>
+              <td class="inputLabel">Confirm Password:</td>
+              <td class="inputBox"><input name="passwordConfirm" type="password" size="14"/></td>
             </tr>
           </table>
         <hr>
