@@ -1,4 +1,4 @@
-/* index.html */
+/* index.php */
 body {
   background-color: rgb(119, 197,235);
   text-align: center;
@@ -201,7 +201,7 @@ hr {
 	height: 40px;
 }
 
-/* aboutUs.html */
+/* aboutUs.php */
 .selfIntroduction {
 	padding-top: 20px;
 }
@@ -242,7 +242,7 @@ hr {
 	color: white;
 }
 
-/* jobPortal.html */
+/* jobPortal.php */
 .jobTable {
 	margin: 0 auto;
 }
@@ -307,4 +307,106 @@ hr {
 
 .jobTable .jobStatus{
 	width: 150px;
+}
+
+/* myAccount.php */
+.myAccountInfoPane {
+	text-align: center;
+	width: 100%;
+}
+
+.myAccountHeading {
+	color:rgb(7, 68, 119);
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+}
+
+.myAccountInfoPane table {
+	width: 400px;
+	text-align: left;
+	color: rgba(36, 108, 167, 0.9); 
+	margin-left: 35%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.myAccountInfoPane table .info {
+	font-size: 15px;
+	vertical-align: top;
+}
+
+.myAccountInfoPane table .label {
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(36, 108, 167, 0.9); 
+	vertical-align: middle;
+}
+
+.myAccountInfoPane table td {
+	height: 30px;
+}
+
+
+
+
+
+.myJobListTable {
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.myJobListTable .myJobLabel{
+	background-color: rgb(36, 108, 167);
+	color: white;
+	font-weight: bold;
+	height: 50px;
+}
+
+.myJobListTable .myJobLabel td{
+	border: 1px solid white;
+}
+
+.myJobListTable tr td:first-child {
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+}
+
+.myJobListTable tr td:last-child {
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+
+.myJobListTable .myJobPosition{
+	width: 200px;
+	font-weight: bold;
+}
+
+.myJobListTable .myJobEntry .myJobPosition{
+	text-decoration: underline;
+	color: rgb(36, 108, 167);
+}
+
+.myJobListTable .myJobDate, .myJobCandidates{
+	width: 120px;
+}
+
+.myJobListTable .myJobStatus {
+	width: 100px;
+}
+
+.myJobListTable .myJobEntry .myJobDescription {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 3; /* number of lines to show */
+   line-height: 20px;        /* fallback */
+   max-height: 80px;       /* fallback */
+   margin-top: 15px;
+   margin-bottom: 15px;
 }

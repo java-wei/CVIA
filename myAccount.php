@@ -3,6 +3,14 @@
   if( !$user->is_logged_in() ){ 
     header('Location: index.php');
   } 
+
+  $connector = mysql_connect(DBHOST,DBUSER,DBPASS)
+    or die("Unable to connect");
+  //echo "Connections are made successfully::";
+  $selected = mysql_select_db("CViA", $connector)
+    or die("Unable to connect");
+
+  $userID = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +37,7 @@
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Login</p>
-          <button class="cancelButton"><img src="cancel.png"></button>
+          <button class="cancelButton"><img src="files/cancel.png"></button>
         </div>
         <hr>
         <form name="login" action="login.php" method="post">
@@ -52,7 +60,7 @@
     <div id="postJobBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Post New Job</p>
-          <button class="cancelButton"><img src="cancel.png"></button>
+          <button class="cancelButton"><img src="files/cancel.png"></button>
         </div>
         <hr>
         <form name="login" action="" method="post">
@@ -79,7 +87,7 @@
     <div id="registerBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Register</p>
-          <button class="cancelButton"><img src="cancel.png"></button>
+          <button class="cancelButton"><img src="files/cancel.png"></button>
         </div>
         <hr>
         <form name="register" action="signup.php" method="post">
@@ -136,21 +144,70 @@
 
       <hr>
 
+      <?php
+            $sql = "SELECT * FROM members WHERE memberID = $userID";
+            $userInfo = mysql_query($sql);
+            $row = mysql_fetch_assoc($userInfo);
+      ?>
       <div class="banner">
-        <button id="UploadCVButton" type="button" class="btn btn-default btn-lg">Upload CV</button>
-        <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
-        <button id="UploadJobButton" type="button" class="btn btn-default btn-lg">Post Job</button>
-        <div>
+        <div class="myAccountInfoPane">
+          <p class="myAccountHeading">My Account Information</p>
           <table>
             <tr>
-              <td><img src="jobs.png"></td>
-              <td>
-                <div style="margin-left: 20px;">
-                  <h2 style="color: rgb(7, 68, 119); font-weight: bold;">We find the best for you!</h2>
-                  <p style="color: rgba(36, 108, 167, 0.9); ">CViA helps to find match between perfect candidates and wonderful jobs. As a job seeker, you can find you dream job here. As a HR, you might get your perfect candidate here.</p>
-                </div>
+              <td class="label">User Name:</td>
+              <td class="info"><?php echo $row["username"]; ?></td>
+            </tr>
+            <tr>
+              <td class="label">Email Address:</td>
+              <td class="info"><?php echo $row["email"]; ?></td>
+            </tr>
+            <tr>
+              <td class="label">No. of Job Posted:</td>
+              <td class="info">
+                <?php 
+                  $sql = "SELECT * FROM Job WHERE owner_id = $userID";
+                  $jobResult = mysql_query($sql);
+                  $num_rows = mysql_num_rows($jobResult);
+                  echo $num_rows; 
+                ?>
               </td>
             </tr>
+          </table>
+          <button id="UploadJobButton" type="button" class="btn btn-default btn-lg" style="margin-top:20px; margin-bottom: 20px; margin:0 auto;">Post New Job</button>
+        </div>
+        <hr>
+        <div class="postedJobPane">
+          <p class="myAccountHeading">My Job List</p>
+          <table class="myJobListTable">
+            <tr class="myJobLabel">
+              <td class="myJobPosition">POSITION</td>
+              <td class="myJobDescription">DESCRIPTION</td>
+              <td class="myJobDate">POST DATE</td>
+              <td class="myJobCandidates">CANDIDATES</td>
+              <td class="myJobStatus">STATUS</td>
+            </tr>
+            <?php
+            $count = 0;
+            while( $row = mysql_fetch_assoc($jobResult) ){
+              if ($count % 2 == 0) {
+                // oddLine
+                echo
+                "<tr class=\"myJobEntry oddLine\">";
+              } else {
+                // evenLine
+                echo
+                "<tr class=\"myJobEntry evenLine\">";
+              }
+              echo
+              "<td class=\"myJobPosition\"><a href=\"#\">".$row["job_title"]."</a></td>
+              <td class=\"myJobDescription\">".$row["job_description"]."</td>
+              <td class=\"myJobDate\">2015-9-30</td>
+              <td class=\"myJobCandidates\">12</td>
+              <td class=\"myJobStatus\">Open</td>
+            </tr>";
+              $count = $count + 1;
+            }
+            ?>
           </table>
         </div>
       </div>
