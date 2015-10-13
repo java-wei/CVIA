@@ -21,7 +21,10 @@
   <body>
     <?php require_once('includes/config.php'); ?>
     <div id="loginBox" style="display:none;"> 
-        <p class="popupHead">Login</p>
+        <div style="position: relative;">
+          <p class="popupHead">Login</p>
+          <button class="cancelButton"><img src="cancel.png"></button>
+        </div>
         <hr>
         <form name="login" action="login.php" method="post">
           <table class="popupFormTable">
@@ -41,7 +44,10 @@
     </div>
 
     <div id="postJobBox" style="display:none;"> 
-        <p class="popupHead">Post New Job</p>
+        <div style="position: relative;">
+          <p class="popupHead">Post New Job</p>
+          <button class="cancelButton"><img src="cancel.png"></button>
+        </div>
         <hr>
         <form name="login" action="" method="post">
           <table class="popupFormTable">
@@ -61,9 +67,12 @@
     </div>
 
     <div id="registerBox" style="display:none;"> 
-        <p class="popupHead">Register</p>
+        <div style="position: relative;">
+          <p class="popupHead">Register</p>
+          <button class="cancelButton"><img src="cancel.png"></button>
+        </div>
         <hr>
-        <form name="register" action="" method="post">
+        <form name="register" action="signup.php" method="post">
           <table class="popupFormTable">
             <tr>
               <td class="inputLabel">Username:</td>
@@ -76,6 +85,10 @@
             <tr>
               <td class="inputLabel">Password:</td>
               <td class="inputBox"><input name="password" type="password" size="14"/></td>
+            </tr>
+            <tr>
+              <td class="inputLabel">Confirm Password:</td>
+              <td class="inputBox"><input name="passwordConfirm" type="password" size="14"/></td>
             </tr>
           </table>
         <hr>
