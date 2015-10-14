@@ -47,7 +47,7 @@ if(isset($_POST['submit'])){
             $mail->Subject = "Password Reset";
             $mail->Body = "Someone requested that the password be reset. \n\nIf this was a mistake, just ignore this email and nothing will happen.\n\nTo reset your password, visit the following address: ".DIR."resetPassword.php?key=$token";
             $mail->AddAddress($row['email']);
-
+            $mail->Send();
 
 			//redirect to index page
 			header('Location: index.php?action=reset');

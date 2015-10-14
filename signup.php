@@ -84,14 +84,14 @@ if(isset($_POST['submit'])){
                         $mail->Body = "Thank you for registering at demo site.\n\n To activate your account, please click on this link:\n\n ".DIR."activate.php?x=$id&y=$activasion\n\n Regards Site Admin \n\n";
                         $mail->AddAddress($_POST['email']);                     
 
-         				// if(!$mail->Send())
-						// {
-						//   echo "Mailer Error: " . $mail->ErrorInfo;
-						// }
-						// else
-						// {
-						//   echo "Message sent!";
-						// }
+         				if(!$mail->Send())
+						{
+						  echo "Mailer Error: " . $mail->ErrorInfo;
+						}
+						else
+						{
+						  echo "Message sent!";
+						}
 						// exit();
 			//redirect to login page
 			header('Location: index.php?action=joined');
