@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<body>
+
+Job Key Word: <input type="text" id="jobKeyWord" >
+CV :<input type="text" id="cv" >
+
+<p>Click the button to get the matched key words</p>
+<button onclick="myFunction()">Try it</button>
+<p>Job Key Words Matched:</p>
+<p id="jobKeyWordsMatched" ></p>
+<p>CV Key Words Matched:</p>
+<p id="cvKeyWordsMatched"></p>
+
+<script>
+/*
+*/
+function myFunction() {
+    var jd = document.getElementById("jobKeyWord").value;
+    var cvd = document.getElementById("cv").value;
+
+
+    //this part read key word liabry
+    var keyWordPath ="file:///C:/Users/Administrator/Desktop/local/keyWordsList.txt";
+    var rawFile = new XMLHttpRequest();
+    var allText;
+    rawFile.open("GET", keyWordPath, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allText = rawFile.responseText;
+                //alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+    //what does this line does?? why remove this line allTextbecome undifined.
+    //same undefine when I call var allText =readTextFile(keyWordPath);
+    if(jd=="") jd="No key word matched for job description";
+    if(cvd=="") cvd="No key word matched for cv description";
+
+    var jd_arr = jd.split(" ");
+    var cvd_arr = cvd.split(" ");
+    var keyWords = allText.split(" ");
+    var jdr = "";
+    var cvdr = "";
+    function include(arr, obj) {
+    for(var i=0; i<arr.length; i++) {
+        if (arr[i] == obj) return true;
+    }
+}
+
+
+    for (var i = 0; i < jd_arr.length; i++) {
+        if(include(keyWords,jd_arr[i])){
+            alert("in");
+            jdr+=jd_arr[i]+"\n";
+        }
+    };
+    // for (var i = 0; i < cvd_arr.length; i++) {
+    //     if(contains(keyWords,cvd_arr[i])
+    //         cvdr+=cvd_arr[i]+"\n";
+    // };
+    document.getElementById("jobKeyWordsMatched").innerHTML = jdr;
+    document.getElementById("cvKeyWordsMatched").innerHTML=cvd_arr;
+}
+function contains(a, obj) {
+    for (var i = 0; i < a.length; i++) {
+        if (a[i] === obj) {
+            return 1;
+        }
+    }
+    return 0;
+}
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                //return rawFile.responseText;
+                // var allText = rawFile.responseText;
+                 alert(allText);
+                // return allText;
+            }
+        }
+    }
+    rawFile.send(null);
+}
+</script>
+
+</body>
+
+
+</html>

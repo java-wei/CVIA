@@ -112,3 +112,50 @@ $("#LoginButton").click(function() {
     }
     document.getElementById("demo").innerHTML = txt;
 }
+function pdf2txt(){
+        var data = document.getElementById("myJob").files[0].name;
+        var complete = 0;
+     console.assert( data  instanceof ArrayBuffer  || typeof data == 'string' );
+     PDFJS.getDocument( data ).then( function(pdf) {
+     var div = document.getElementById('viewer');
+
+     var total = pdf.numPages;
+     var layers = {};        
+     for (i = 1; i <= total; i++){
+        pdf.getPage(i).then( function(page){
+        var n = page.pageNumber;
+        page.getTextContent().then( function(textContent){
+          if( null != textContent.bidiTexts ){
+            var page_text = "";
+            var last_block = null;
+            for( var k = 0; k < textContent.bidiTexts.length; k++ ){
+                var block = textContent.bidiTexts[k];
+                if( last_block != null && last_block.str[last_block.str.length-1] != ' '){
+                    if( block.x < last_block.x )
+                        page_text += "\r\n"; 
+                    else if ( last_block.y != block.y && ( last_block.str.match(/^(\s?[a-zA-Z])$|^(.+\s[a-zA-Z])$/) == null ))
+                        page_text += ' ';
+                }
+                page_text += block.str;
+                last_block = block;
+            }
+
+            textContent != null && console.log("page " + n + " finished."); //" content: \n" + page_text);
+            layers[n] =  page_text + "\n\n";
+          }
+          ++ complete;
+          if (complete == total){
+            window.setTimeout(function(){
+              var full_text = "";
+              var num_pages = Object.keys(layers).length;
+              for( var j = 1; j <= num_pages; j++)
+                  full_text += layers[j] ;
+              
+            }, 1000);              
+          }
+        }); // end  of page.getTextContent().then
+      }); // end of page.then
+    } // of for
+  });
+document.getElementById("demo").innerHTML = full_text;
+ } // end of pdfToText()

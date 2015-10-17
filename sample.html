@@ -31,7 +31,7 @@ window.addEventListener("message", function(event){
 
     // anything else = the processor has returned the text of the PDF
     default:
-      output.textContent = event.data.replace(/\s+/g, " ");
+      output.textContent = event.data;
     break;
   }
 }, true);
