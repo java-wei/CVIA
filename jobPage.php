@@ -2,6 +2,7 @@
 <html lang="en">
   <?php
       require_once('includes/config.php'); 
+      require_once('db/SQLquery.php'); 
 
       if(isset($_GET['action'])) {
 
@@ -173,15 +174,33 @@
             echo "<button class=\"checkRankingButton btn btn-default btn-lg\" type=\"button\" style=\"margin-top:20px;\">Check Ranking</button>";
           } 
         ?>
-        <button class="UploadCVButton btn btn-default btn-lg" type="button" style="margin-top:20px;">Submit CV</button>;
+        <button class="UploadCVButton btn btn-default btn-lg" type="button" style="margin-top:20px;">Submit CV</button>
       </div>
 
       <hr>
-
-      <div class="jobSection">
-        <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
+      <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
+      
+      <div class="rankPane">
+        <table class="rankTable">
+          <tr class="rankLabel">
+            <td class="rankIndex">Rank</td>
+            <td class="rankName">Name</td>
+            <td class="rankPhone">Phone</td>
+            <td class="rankEmail">Email</td>
+            <td class="rankSummary">Summary</td>
+          </tr>
+          <tr class="rankEntry oddLine">
+            <td class="rankIndex">1</td>
+            <td class="rankName"><a href="#" target="_blank">Wen Yiran</a></td>
+            <td class="rankPhone">98911715</td>
+            <td class="rankEmail">aieryiran@gmail.com</td>
+            <td class="rankSummary">UI designer; Web developer; Java, C, Objective-C, Javascript, PHP, MySQL; Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text.</td>
+          </tr>
+        </table>
       </div>
     </div>
+
+    <hr>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

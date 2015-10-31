@@ -134,7 +134,7 @@ hr {
 	margin-bottom: 20px;
 }
 
-#LoginButton, #RegisterButton, .UploadCVButton, .checkRankingButton {
+#LoginButton, #RegisterButton, .UploadCVButton, .checkRankingButton, .ViewCVButton {
 	margin-left: 10px;
 	border: none;
 	color: rgb(10, 85, 148);
@@ -482,4 +482,86 @@ hr {
 .jtDescription {
 	padding-top: 15px;
 	padding-bottom: 15px;
+}
+
+.rankTable {
+	width: 100%;
+}
+
+.rankTable .rankLabel{
+	background-color: rgb(36, 108, 167);
+	color: white;
+	font-weight: bold;
+	height: 50px;
+}
+
+.rankTable .rankLabel td{
+	border: 1px solid white;
+}
+
+.oddLine {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+.evenLine {
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.rankTable tr td:first-child {
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+}
+
+.rankTable tr td:last-child {
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+
+.rankTable .jobTitle{
+	width: 200px;
+	font-weight: bold;
+}
+
+.rankEntry {
+	height: 40px;
+}
+
+.rankTable .rankEntry .rankName{
+	text-decoration: underline;
+	color: rgb(36, 108, 167);
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.rankTable .rankIndex {
+	width: 50px;
+}
+
+.rankTable .rankName, .rankTable .rankPhone {
+	width: 130px;
+} 
+
+.rankTable .rankEmail{
+	width: 180px;
+}
+
+.rankTable .rankEntry .rankSummary {
+   text-align: left;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 4; /* number of lines to show */
+   line-height: 20px;        /* fallback */
+   max-height: 100px;       /* fallback */
+   margin-top: 10px;
+   margin-bottom: 15px;
+}
+
+.rankTable .jobStatus{
+	width: 150px;
 }
