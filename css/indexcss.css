@@ -134,7 +134,7 @@ hr {
 	margin-bottom: 20px;
 }
 
-#LoginButton, #RegisterButton, .UploadCVButton, .checkRankingButton, .ViewCVButton {
+#LoginButton, #RegisterButton, .UploadCVButton, #checkRankingButton, .ViewCVButton {
 	margin-left: 10px;
 	border: none;
 	color: rgb(10, 85, 148);
@@ -560,6 +560,8 @@ hr {
    max-height: 100px;       /* fallback */
    margin-top: 10px;
    margin-bottom: 15px;
+   padding-left: 5px;
+   padding-right: 5px;
 }
 
 .rankTable .jobStatus{

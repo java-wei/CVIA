@@ -171,16 +171,16 @@
         </table>
         <?php
           if ($user->is_logged_in()){
-            echo "<button class=\"checkRankingButton btn btn-default btn-lg\" type=\"button\" style=\"margin-top:20px;\">Check Ranking</button>";
+            echo "<button id=\"checkRankingButton\" class=\"btn btn-default btn-lg\" type=\"button\" style=\"margin-top:20px;\">Check Ranking</button>";
           } 
         ?>
         <button class="UploadCVButton btn btn-default btn-lg" type="button" style="margin-top:20px;">Submit CV</button>
       </div>
 
-      <hr>
       <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
       
-      <div class="rankPane">
+      <div id="rankPane" style="display: none;">
+        <hr>
         <table class="rankTable">
           <tr class="rankLabel">
             <td class="rankIndex">Rank</td>

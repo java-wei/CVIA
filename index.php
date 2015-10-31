@@ -70,6 +70,34 @@
         <p class="assistantButton"><a href='signup.php'>Create Account</a></p>
     </div>
 
+    <div id="postJobBox" style="display:none;"> 
+        <div style="position: relative;">
+          <p class="popupHead">Post New Job</p>
+          <button class="cancelButton"><img src="files/cancel.png"></button>
+        </div>
+        <hr>
+        <form name="login" action="" method="post">
+          <table class="popupFormTable">
+            <tr>
+              <td class="inputLabel">Job Name:</td>
+              <td class="inputBox"><input name="jobname" size="14"/></td>
+            </tr>
+            <tr>
+              <td class="inputLabel">Company:</td>
+              <td class="inputBox"><input name="jobCompany" size="14"/></td>
+            </tr>
+            <tr>
+              <td class="inputLabel">Description keywords:</td>
+              <td class="inputBox"><input id="tagInputBox" name="jobKeyword" size="14"/></td>
+              <td><button id="addKeywordButton" type="button" class="btn btn-default btn-lg">Add</button></td>
+            </tr>
+          </table>
+        <div id="tagArea">
+        </div>
+        <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Post" id="jobSubmitButton"/></center>
+      </form>
+    </div>
+
     <div id="registerBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Register</p>
@@ -134,6 +162,11 @@
 
       <hr>
 
+      <?
+        if ($user->is_logged_in()){
+          echo "<button id=\"UploadJobButton\" type=\"button\" class=\"btn btn-default btn-lg\">Post New Job</button>";
+        } 
+      ?>
       <div class="banner">
         <div>
           <table>
