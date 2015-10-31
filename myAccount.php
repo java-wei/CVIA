@@ -74,12 +74,13 @@
               <td class="inputBox"><input name="jobCompany" size="14"/></td>
             </tr>
             <tr>
-              <td class="inputLabel">Job Description:</td>
-              <td><button id="uploadDescriptionButton" type="button" class="btn btn-default btn-lg" style="width: 80%;">Upload Job Description</button></td>
+              <td class="inputLabel">Description keywords:</td>
+              <td class="inputBox"><input id="tagInputBox" name="jobKeyword" size="14"/></td>
+              <td><button id="addKeywordButton" type="button" class="btn btn-default btn-lg">Add</button></td>
             </tr>
           </table>
-        <input type="file" id="myJob" multiple onchange="myFunctionJob()" style="display:none;">
-        <hr>
+        <div id="tagArea">
+        </div>
         <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Post" id="jobSubmitButton"/></center>
       </form>
     </div>
@@ -173,7 +174,7 @@
               </td>
             </tr>
           </table>
-          <button id="UploadJobButton" type="button" class="btn btn-default btn-lg" style="margin-top:20px; margin-bottom: 20px; margin:0 auto;">Post New Job</button>
+          <button id="UploadJobButton" type="button" class="btn btn-default btn-lg" style="margin-top:20px; margin:0 auto;">Post New Job</button>
         </div>
         <hr>
         <div class="postedJobPane">

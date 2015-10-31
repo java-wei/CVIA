@@ -46,7 +46,19 @@
 
       }
 
+    $connector = mysql_connect(DBHOST,DBUSER,DBPASS)
+      or die("Unable to connect");
+    //echo "Connections are made successfully::";
+    $selected = mysql_select_db("CViA", $connector)
+      or die("Unable to connect");
+    $jobID = $_GET["job"];
+    $tableName = 'Job';
+    $sql = "SELECT * FROM ".$tableName." WHERE job_id = ".$jobID;
+    $jobResult = mysql_query($sql);
+    $num_rows = mysql_num_rows($jobResult);
+    $row = mysql_fetch_assoc($jobResult);
   ?>
+
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Login</p>
@@ -110,7 +122,7 @@
         </div>
         <div class="tabSection span_8 column">
           <div class="tabs">
-            <a href="#" style="color:rgb(7, 68, 119);">Home Page</a>
+            <a href="index.php">Home Page</a>
             <a href="jobPortal.php">Job Portal</a>
             <a href="aboutUs.php">About Us</a>
             <?php
@@ -134,25 +146,32 @@
 
       <hr>
 
-      <div class="banner">
-        <div>
-          <table>
-            <tr>
-              <td><img src="files/jobs.png"></td>
-              <td>
-                <div style="margin-left: 20px;">
-                  <h2 style="color: rgb(7, 68, 119); font-weight: bold;">We find the best for you!</h2>
-                  <p style="color: rgba(36, 108, 167, 0.9); ">CViA helps to find match between perfect candidates and wonderful jobs. As a job seeker, you can find you dream job here. As a HR, you might get your perfect candidate here.</p>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
+      <div class="jobDescriptionPane">
+        <table class="jobDescriptionTable">
+          <tr class="oddLine">
+            <td class="jtLabel">Job Name</td>
+            <td><?php echo $row["job_title"]?></td>
+          </tr>
+          <tr class="evenLine">
+            <td class="jtLabel">Company</td>
+            <td><?php echo $row["company"]?></td>
+          </tr>
+          <tr class="oddLine">
+            <td class="jtLabel">Key Requirement</td>
+            <td class="jtDescription"><?php echo $row["job_description"]?></td>
+          </tr>
+          <tr class="evenLine">
+            <td class="jtLabel">No. of Applicants</td>
+            <td>12</td>
+          </tr>
+        </table>
+        <button class="UploadCVButton btn btn-default btn-lg" type="button" style="margin-top:20px;">Submit CV</button>
       </div>
 
       <hr>
 
       <div class="jobSection">
+        <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
       </div>
     </div>
 

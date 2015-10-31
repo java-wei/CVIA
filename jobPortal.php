@@ -175,7 +175,7 @@
                 "<tr class=\"jobEntry evenLine\">";
               }
               echo
-              "<td class=\"jobTitle\"><a href=\"#\">".$row["job_title"]."</a></td>
+              "<td class=\"jobTitle\"><a href=\"jobPage.php?job=".$row["job_id"]."\" target=\"_blank\">".$row["job_title"]."</a></td>
               <td class=\"jobCompany\">".$row["company"]."</td>
               <td class=\"jobDescription\">".$row["job_description"]."</td>
               <td class=\"jobStatus\"><button class=\"UploadCVButton btn btn-default btn-lg\" type=\"button\" >Submit CV</button></td>
