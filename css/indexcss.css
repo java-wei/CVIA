@@ -8,6 +8,10 @@ footer {
 	font-size: 10px;
 }
 
+.bg-success {
+	
+}
+
 #bigHeading {
 	font-size: 50px;
 	font-weight: bold;
@@ -153,8 +157,8 @@ hr {
     position: fixed;
     top: 45%;
     left: 45%;
-    width:40em;
-    height:25em;
+    width: 40em;
+    height: 25em;
     margin-top: -9em; /*set to a negative number 1/2 of your height*/
     margin-left: -15em; /*set to a negative number 1/2 of your width*/
     background-color: rgba(236, 247, 255, 1);
@@ -168,6 +172,17 @@ hr {
 #registerBox {
 	top: 40%;
 	height: 30em;
+}
+
+#postJobBox {
+	top: 20%;
+	height: 50em;
+	left: 42%;
+    width: 45em;
+}
+
+#postJobBox #jobSubmitButton {
+	margin-top: 15px;
 }
 
 #blockMask {
@@ -409,4 +424,34 @@ hr {
    max-height: 80px;       /* fallback */
    margin-top: 15px;
    margin-bottom: 15px;
+}
+
+#tagArea {
+	text-align: left;
+	width: 500px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.tag {
+	display: inline;
+	text-align: center;
+}
+
+.tag p{
+	font-size: 20px;
+	display: inline-block;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: white;
+	background-color: rgb(36, 108, 167);
+	-moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
 }

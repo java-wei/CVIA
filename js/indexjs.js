@@ -1,4 +1,7 @@
-$("#LoginButton").click(function() {
+var tagCount = 0;
+var tagArray = [];
+
+  $("#LoginButton").click(function() {
     $("#loginBox").fadeIn("slow");
     $("#loginBox").css("z-index", "5");
     $("#blockMask").fadeIn("slow");
@@ -111,4 +114,14 @@ $("#LoginButton").click(function() {
         }
     }
     document.getElementById("demo").innerHTML = txt;
-}
+  }
+
+  $("#addKeywordButton").click(function() {
+    var tag = $("#tagInputBox").val();
+    $("#tagInputBox").val("");
+
+    tagCount = tagCount + 1;
+    tagArray.push(tag);
+
+    $("#tagArea").append("<div class=\"tag\"><p>" + tag + "</p></div>");    
+  })

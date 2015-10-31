@@ -30,7 +30,8 @@
             echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
             break;
           case 'login' :
-            echo "<h2 class='bg-success'>Login successfully.</h2>";
+            //echo "<h2 class='bg-success' id='loginSuccess'>Login successfully.</h2>";
+              echo "<script>$(\"#blockMask\").fadeIn(\"slow\");</script>";
             break;
           case 'joined' :
             echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";
@@ -86,11 +87,13 @@
               <td class="inputBox"><input name="jobCompany" size="14"/></td>
             </tr>
             <tr>
-              <td class="inputLabel">Job Description:</td>
-              <td><button id="uploadDescriptionButton" type="button" class="btn btn-default btn-lg" style="width: 80%;">Upload Job Description</button></td>
+              <td class="inputLabel">Description keywords:</td>
+              <td class="inputBox"><input id="tagInputBox" name="jobKeyword" size="14"/></td>
+              <td><button id="addKeywordButton" type="button" class="btn btn-default btn-lg">Add</button></td>
             </tr>
           </table>
-        <input type="file" id="myJob" multiple onchange="myFunctionJob()" style="display:none;">
+        <div id="tagArea">
+        </div>
         <hr>
         <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Post" id="jobSubmitButton"/></center>
       </form>
