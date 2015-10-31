@@ -94,7 +94,6 @@
           </table>
         <div id="tagArea">
         </div>
-        <hr>
         <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Post" id="jobSubmitButton"/></center>
       </form>
     </div>
@@ -164,8 +163,6 @@
       <hr>
 
       <div class="banner">
-        <button id="UploadCVButton" type="button" class="btn btn-default btn-lg">Upload CV</button>
-        <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
         <button id="UploadJobButton" type="button" class="btn btn-default btn-lg">Post Job</button>
         <div>
           <table>
@@ -185,7 +182,6 @@
       <hr>
 
       <div class="jobSection">
-        <p id="demo"></p>
       </div>
     </div>
 

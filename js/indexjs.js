@@ -26,7 +26,7 @@ var tagArray = [];
     $("#myJob").trigger('click');
   });
 
-  $("#UploadCVButton").click(function() {
+  $(".UploadCVButton").click(function() {
     $("#myFile").trigger('click');
   });
 
@@ -122,6 +122,17 @@ var tagArray = [];
 
     tagCount = tagCount + 1;
     tagArray.push(tag);
+
+    var tagAreaheight = $("#tagArea").map(function ()
+    {
+      return $(this).height();
+    }).get();
+
+    if (tagAreaheight >= 250) {
+      $("#addKeywordButton").attr("disabled", true);
+    } else {
+      $("#addKeywordButton").attr("disabled", false);
+    }
 
     $("#tagArea").append("<div class=\"tag\"><p>" + tag + "</p></div>");    
   })

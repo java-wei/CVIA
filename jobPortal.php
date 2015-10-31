@@ -65,12 +65,17 @@
               <td class="inputBox"><input name="jobname" size="14"/></td>
             </tr>
             <tr>
-              <td class="inputLabel">Job Description:</td>
-              <td><button id="uploadDescriptionButton" type="button" class="btn btn-default btn-lg" style="width: 80%;">Upload Job Description</button></td>
+              <td class="inputLabel">Company:</td>
+              <td class="inputBox"><input name="jobCompany" size="14"/></td>
+            </tr>
+            <tr>
+              <td class="inputLabel">Description keywords:</td>
+              <td class="inputBox"><input id="tagInputBox" name="jobKeyword" size="14"/></td>
+              <td><button id="addKeywordButton" type="button" class="btn btn-default btn-lg">Add</button></td>
             </tr>
           </table>
-        <input type="file" id="myJob" multiple onchange="myFunctionJob()" style="display:none;">
-        <hr>
+        <div id="tagArea">
+        </div>
         <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Post" id="jobSubmitButton"/></center>
       </form>
     </div>
@@ -140,6 +145,11 @@
       <hr>
 
       <div class="jobListPane">
+        <?
+        if ($user->is_logged_in()){
+          echo "<button id=\"UploadJobButton\" type=\"button\" class=\"btn btn-default btn-lg\">Post New Job</button>";
+        } 
+        ?>
         <div class="jobList">
           <table class="jobTable">
             <tr class="tableLabel">
@@ -168,7 +178,7 @@
               "<td class=\"jobTitle\"><a href=\"#\">".$row["job_title"]."</a></td>
               <td class=\"jobCompany\">".$row["company"]."</td>
               <td class=\"jobDescription\">".$row["job_description"]."</td>
-              <td class=\"jobStatus\"><button class=\"applyButton btn btn-default btn-lg\" type=\"button\" >Apply</button></td>
+              <td class=\"jobStatus\"><button class=\"UploadCVButton btn btn-default btn-lg\" type=\"button\" >Submit CV</button></td>
               </tr>";
               $count = $count + 1;
             }
@@ -180,6 +190,7 @@
       <hr>
 
       <div class="jobSection">
+        <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
         <p id="demo"></p>
       </div>
     </div>

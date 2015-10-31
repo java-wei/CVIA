@@ -130,7 +130,11 @@ hr {
 	text-align: right;
 }
 
-#LoginButton, #RegisterButton, .applyButton {
+#UploadJobButton {
+	margin-bottom: 20px;
+}
+
+#LoginButton, #RegisterButton, .UploadCVButton {
 	margin-left: 10px;
 	border: none;
 	color: rgb(10, 85, 148);
@@ -439,7 +443,7 @@ hr {
 }
 
 .tag p{
-	font-size: 20px;
+	font-size: 15px;
 	display: inline-block;
 	margin-left: 20px;
 	margin-right: 20px;
