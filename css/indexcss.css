@@ -134,7 +134,7 @@ hr {
 	margin-bottom: 20px;
 }
 
-#LoginButton, #RegisterButton, .UploadCVButton {
+#LoginButton, #RegisterButton, .UploadCVButton, .checkRankingButton {
 	margin-left: 10px;
 	border: none;
 	color: rgb(10, 85, 148);

@@ -1,25 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Powerful Dream Finder</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/indexcss.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <?php
+  <?php
       require_once('includes/config.php'); 
 
       if(isset($_GET['action'])) {
@@ -43,7 +24,6 @@
             echo "<h2 class='bg-success'>Password changed, you may now login.</h2>";
             break;
         }
-
       }
 
     $connector = mysql_connect(DBHOST,DBUSER,DBPASS)
@@ -59,6 +39,25 @@
     $row = mysql_fetch_assoc($jobResult);
   ?>
 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title><?php echo $row["job_title"]."-".$row["company"] ?></title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/indexcss.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Login</p>
@@ -123,7 +122,7 @@
         <div class="tabSection span_8 column">
           <div class="tabs">
             <a href="index.php">Home Page</a>
-            <a href="jobPortal.php">Job Portal</a>
+            <a href="jobPortal.php" style="color:rgb(7, 68, 119);">Job Portal</a>
             <a href="aboutUs.php">About Us</a>
             <?php
               if ($user->is_logged_in()){
@@ -157,15 +156,24 @@
             <td><?php echo $row["company"]?></td>
           </tr>
           <tr class="oddLine">
+            <td class="jtLabel">Post Date</td>
+            <td>2015-2-11</td>
+          </tr>
+          <tr class="evenLine">
             <td class="jtLabel">Key Requirement</td>
             <td class="jtDescription"><?php echo $row["job_description"]?></td>
           </tr>
-          <tr class="evenLine">
+          <tr class="oddLine">
             <td class="jtLabel">No. of Applicants</td>
             <td>12</td>
           </tr>
         </table>
-        <button class="UploadCVButton btn btn-default btn-lg" type="button" style="margin-top:20px;">Submit CV</button>
+        <?php
+          if ($user->is_logged_in()){
+            echo "<button class=\"checkRankingButton btn btn-default btn-lg\" type=\"button\" style=\"margin-top:20px;\">Check Ranking</button>";
+          } 
+        ?>
+        <button class="UploadCVButton btn btn-default btn-lg" type="button" style="margin-top:20px;">Submit CV</button>;
       </div>
 
       <hr>

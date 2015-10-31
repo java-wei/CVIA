@@ -200,7 +200,7 @@
                 "<tr class=\"myJobEntry evenLine\">";
               }
               echo
-              "<td class=\"myJobPosition\"><a href=\"#\">".$row["job_title"]."</a></td>
+              "<td class=\"myJobPosition\"><a href=\"jobPage.php?job=".$row["job_id"]."\" target=\"_blank\">".$row["job_title"]."</a></td>
               <td class=\"myJobDescription\">".$row["job_description"]."</td>
               <td class=\"myJobDate\">2015-9-30</td>
               <td class=\"myJobCandidates\">12</td>

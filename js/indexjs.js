@@ -128,7 +128,7 @@ var tagArray = [];
       return $(this).height();
     }).get();
 
-    if (tagAreaheight >= 300) {
+    if (tagAreaheight >= 280) {
       $("#addKeywordButton").attr("disabled", true);
     } else {
       $("#addKeywordButton").attr("disabled", false);
