@@ -156,13 +156,13 @@
         </form>
         <br /><br />
         <?php
-          if(isset($_GET['status']) and $_GET['status'] === 'success')
+          if(isset($_GET['status']) and $_GET['status'] === 'success' and isset($_GET['cv']))
           {
         ?>
             <script>
               alert('successfully uploaded!');
             </script>
-            <label>File Uploaded Successfully...  <a href="viewCV.php">click here to view file.</a></label>
+            <label>File Uploaded Successfully...  <a href="download.php?id=<?php echo $_GET['cv'] ?>">Click here to view file.</a></label>
         <?php
           }
           else if(isset($_GET['status']) and $_GET['status'] === 'fail')
