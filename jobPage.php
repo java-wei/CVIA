@@ -1,31 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <?php
-      require_once('includes/config.php'); 
-      require_once('db/SQLquery.php'); 
-
-      if(isset($_GET['action'])) {
-
-        //check the action
-        switch ($_GET['action']) {
-          case 'active':
-            echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
-            break;
-          case 'login' :
-            //echo "<h2 class='bg-success' id='loginSuccess'>Login successfully.</h2>";
-              echo "<script>$(\"#blockMask\").fadeIn(\"slow\");</script>";
-            break;
-          case 'joined' :
-            echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";
-            break;
-          case 'reset':
-            echo "<h2 class='bg-success'>Please check your inbox for a reset link.</h2>";
-            break;
-          case 'resetAccount':
-            echo "<h2 class='bg-success'>Password changed, you may now login.</h2>";
-            break;
-        }
-      }
+  require_once('includes/config.php'); 
+  require_once('db/SQLquery.php'); 
 
     $connector = mysql_connect(DBHOST,DBUSER,DBPASS)
       or die("Unable to connect");
@@ -174,10 +151,37 @@
             echo "<button id=\"checkRankingButton\" class=\"btn btn-default btn-lg\" type=\"button\" style=\"margin-top:20px;\">Check Ranking</button>";
           } 
         ?>
-        <button class="UploadCVButton btn btn-default btn-lg" type="button" style="margin-top:20px;">Submit CV</button>
       </div>
 
-      <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
+      <div id="body">
+        <?php
+          echo '<form action="uploadCV.php?jobID='.$jobID.'" method="post" enctype="multipart/form-data">';
+        ?>
+          <input type="file" name="myFile" accept="application/pdf" value="Choose file" />
+          <button class="UploadCVButton btn btn-default btn-lg" button type="submit" name="btn-upload">Submit CV</button>
+        </form>
+        <br /><br />
+        <?php
+          if(isset($_GET['status']) and $_GET['status'] === 'success')
+          {
+        ?>
+            <script>
+              alert('successfully uploaded!');
+            </script>
+            <label>File Uploaded Successfully...  <a href="viewCV.php">click here to view file.</a></label>
+        <?php
+          }
+          else if(isset($_GET['status']) and $_GET['status'] === 'fail')
+          {
+        ?>
+            <script>
+              alert('error while uploading file');
+            </script>
+            <label>Problem While File Uploading !</label>
+        <?php
+          }
+        ?>
+      </div>
       
       <div id="rankPane" style="display: none;">
         <hr>

@@ -178,7 +178,7 @@
               "<td class=\"jobTitle\"><a href=\"jobPage.php?job=".$row["job_id"]."\" target=\"_blank\">".$row["job_title"]."</a></td>
               <td class=\"jobCompany\">".$row["company"]."</td>
               <td class=\"jobDescription\">".$row["job_description"]."</td>
-              <td class=\"jobStatus\"><button class=\"UploadCVButton btn btn-default btn-lg\" type=\"button\" >Submit CV</button></td>
+              <td class=\"jobStatus\"><input type=\"file\" name=\"UploadFile\" id=\"myFile\" class=\"homereportupload\"  accept=\"application/pdf\"/></td>
               </tr>";
               $count = $count + 1;
             }
