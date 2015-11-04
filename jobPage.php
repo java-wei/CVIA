@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <?php
-  require_once('includes/config.php'); 
-  require_once('db/SQLquery.php'); 
+    require_once('includes/config.php'); 
 
-    $connector = mysql_connect(DBHOST,DBUSER,DBPASS)
-      or die("Unable to connect");
-    //echo "Connections are made successfully::";
-    $selected = mysql_select_db("CViA", $connector)
-      or die("Unable to connect");
     $jobID = $_GET["job"];
     $tableName = 'Job';
     $sql = "SELECT * FROM ".$tableName." WHERE job_id = ".$jobID;

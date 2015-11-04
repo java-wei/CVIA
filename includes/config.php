@@ -12,7 +12,7 @@ define('DBPASS','');
 define('DBNAME','cvia');
 
 //application address
-define('DIR','http://cvia.comze.com/');
+define('DIR','http://localhost:8081/CVIA/');
 
 try {
 
@@ -25,6 +25,9 @@ try {
     echo '<p class="bg-danger">'.$e->getMessage().'</p>';
     exit;
 }
+
+$connector = mysql_connect(DBHOST,DBUSER,DBPASS) or die("Unable to connect");
+$selected = mysql_select_db("CViA", $connector) or die("Unable to connect");
 
 //include the user class, pass in the database connection
 include('classes/user.php');

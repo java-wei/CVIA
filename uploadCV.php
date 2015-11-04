@@ -1,5 +1,7 @@
 <?php
 require_once('pdfExtractor.php'); 
+require_once('includes/config.php'); 
+require_once('db/SQLquery.php'); 
 
 if(isset($_POST['btn-upload']))
 {    
@@ -18,12 +20,18 @@ if(isset($_POST['btn-upload']))
 	}
 
 	move_uploaded_file($file_loc,$folder.$file);
-	echo extractPDF(dirname(__FILE__)."\CVs\\".$file);
-	unlink($folder.$file);
-
-	$sql="INSERT INTO tbl_uploads(file,type,size) VALUES('$file','$file_type','$file_size')";
-	// mysql_query($sql); 
-
+	$cv_description = extractPDF(dirname(__FILE__)."\CVs\\".$file);
+	
+    $sql = "INSERT INTO cv (cv_description, cv_keyword)
+                VALUES ('$cv_description', NULL);";
+    $result = mysql_query($sql);
+    
+    $query = mysql_query("SELECT @@IDENTITY AS 'Identity';");
+    $row = mysql_fetch_assoc($query);
+    $CV_id = $row['Identity'];
+    echo $CV_id;    
+  
+  	unlink($folder.$file);
 	header('Location: jobPage.php?job='.$_GET['jobID'].'&status=success');
 }
 else {
