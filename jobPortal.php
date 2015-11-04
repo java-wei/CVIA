@@ -145,7 +145,7 @@
       <hr>
 
       <div class="jobListPane">
-        <?
+        <?php
         if ($user->is_logged_in()){
           echo "<button id=\"UploadJobButton\" type=\"button\" class=\"btn btn-default btn-lg\">Post New Job</button>";
         } 
