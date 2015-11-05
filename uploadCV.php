@@ -18,11 +18,12 @@ if(isset($_POST['btn-upload']))
 	}
 
 	move_uploaded_file($file_loc,$folder.$file);
-	$cv_description = extractPDF(dirname(__FILE__)."/CVs/".$file);
-	// var_dump($cv_description);
-    $sql = "INSERT INTO ".CV_TABLE." (cv_description, cv_keyword)
+	$cv_description = escapeQuote(extractPDF(dirname(__FILE__)."/CVs/".$file));
+	
+	$sql = "INSERT INTO ".CV_TABLE." (cv_description, cv_keyword)
                 VALUES ('$cv_description', NULL);";
     $result = mysql_query($sql);
+    // echo mysql_errno($connector) . ": " . mysql_error($connector) . "\n";
     // var_dump($result);
     // exit(0);
     $query = mysql_query("SELECT @@IDENTITY AS 'Identity';");
@@ -39,5 +40,16 @@ else {
 	header('Location: jobPage.php?job='.$_GET['jobID'].'&status=fail');
 }
 
+function escapeQuote($cv_description) {
+	if(strrpos($cv_description, "'")) {
+  		$cv_description = str_replace("'","\'", $cv_description);
+  	}
+
+	if(strrpos($cv_description, "\"")) {
+  		$path = str_replace("\"","\\\"", $cv_description);
+  	}  	
+}
+
 ?>
+
 
