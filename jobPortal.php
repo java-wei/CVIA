@@ -145,7 +145,7 @@
       <hr>
 
       <div class="jobListPane">
-        <?
+        <?php
         if ($user->is_logged_in()){
           echo "<button id=\"UploadJobButton\" type=\"button\" class=\"btn btn-default btn-lg\">Post New Job</button>";
         } 
@@ -178,7 +178,12 @@
               "<td class=\"jobTitle\"><a href=\"jobPage.php?job=".$row["job_id"]."\" target=\"_blank\">".$row["job_title"]."</a></td>
               <td class=\"jobCompany\">".$row["company"]."</td>
               <td class=\"jobDescription\">".$row["job_description"]."</td>
-              <td class=\"jobStatus\"><button class=\"UploadCVButton btn btn-default btn-lg\" type=\"button\" >Submit CV</button></td>
+              <td class=\"jobStatus\">
+              <form action=\"uploadCV.php?jobID=".$row["job_id"]."\" method=\"post\" enctype=\"multipart/form-data\">
+                <input type=\"file\" name=\"UploadFile\" id=\"myFile\" class=\"homereportupload\" accept=\"application/pdf\">
+                <button class=\"UploadCVButton btn btn-default btn-lg\" button type=\"submit\" name=\"btn-upload\">Submit CV</button>
+              </form>
+              </td>
               </tr>";
               $count = $count + 1;
             }
