@@ -4,8 +4,7 @@
     require_once('includes/config.php'); 
 
     $jobID = $_GET["job"];
-    $tableName = 'Job';
-    $sql = "SELECT * FROM ".$tableName." WHERE job_id = ".$jobID;
+    $sql = "SELECT * FROM ".JOB_TABLE." WHERE job_id = ".$jobID;
     $jobResult = mysql_query($sql);
     $num_rows = mysql_num_rows($jobResult);
     $row = mysql_fetch_assoc($jobResult);

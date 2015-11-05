@@ -22,8 +22,6 @@ function convert_path($path) {
   	$pieces = explode(":", $path, 2);
   	$path = "/cygdrive/".strtolower($pieces[0]).$pieces[1];
   }
-    var_dump($path);
-
   return $path;
 }
 // var_dump(dirname(__FILE__)."/CVs/Wen Yiran's Resume.pdf");
