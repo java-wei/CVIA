@@ -32,12 +32,12 @@
     //echo "Connections are made successfully::";
     $selected = mysql_select_db("CViA", $connector)
       or die("Unable to connect");
-    $jobID = $_GET["job"];
-    $tableName = 'Job';
-    $sql = "SELECT * FROM ".$tableName." WHERE job_id = ".$jobID;
-    $jobResult = mysql_query($sql);
-    $num_rows = mysql_num_rows($jobResult);
-    $row = mysql_fetch_assoc($jobResult);
+    $peopleID = $_GET["people"];
+    $tableName = 'CV';
+    $sql = "SELECT * FROM ".$tableName." WHERE cv_id = ".$peopleID;
+    $cvResult = mysql_query($sql);
+    $num_rows = mysql_num_rows($cvResult);
+    $row = mysql_fetch_assoc($cvResult);
     $userID = $_SESSION['id'];
   ?>
 
@@ -46,7 +46,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title><?php echo $row["job_title"]."-".$row["company"] ?></title>
+    <title>Wen Yiran</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -150,53 +150,24 @@
       <div class="jobDescriptionPane">
         <table class="jobDescriptionTable">
           <tr class="oddLine">
-            <td class="jtLabel">Job Name</td>
+            <td class="jtLabel">Name</td>
             <td><?php echo $row["job_title"]?></td>
           </tr>
           <tr class="evenLine">
-            <td class="jtLabel">Company</td>
+            <td class="jtLabel">Contact Number</td>
             <td><?php echo $row["company"]?></td>
           </tr>
           <tr class="oddLine">
-            <td class="jtLabel">Post Date</td>
+            <td class="jtLabel">Email Address</td>
             <td>2015-2-11</td>
           </tr>
           <tr class="evenLine">
-            <td class="jtLabel">Key Requirement</td>
+            <td class="jtLabel">CV Summary</td>
             <td class="jtDescription"><?php echo $row["job_description"]?></td>
           </tr>
           <tr class="oddLine">
-            <td class="jtLabel">No. of Applicants</td>
+            <td class="jtLabel">Date of Applying</td>
             <td>12</td>
-          </tr>
-        </table>
-        <?php
-          if (($user->is_logged_in()) && ($userID == $row["owner_id"])){
-            echo "<button id=\"checkRankingButton\" class=\"btn btn-default btn-lg\" type=\"button\" style=\"margin-top:20px;\">Check Ranking</button>";
-          } else {
-            echo "<button class=\"UploadCVButton btn btn-default btn-lg\" type=\"button\" style=\"margin-top:20px;\">Submit CV</button>";
-          }
-        ?>
-      </div>
-
-      <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
-      
-      <div id="rankPane" style="display: none;">
-        <hr>
-        <table class="rankTable">
-          <tr class="rankLabel">
-            <td class="rankIndex">RANK</td>
-            <td class="rankName">NAME</td>
-            <td class="rankPhone">PHONE</td>
-            <td class="rankEmail">EMAIL</td>
-            <td class="rankSummary">SUMMARY</td>
-          </tr>
-          <tr class="rankEntry oddLine">
-            <td class="rankIndex">1</td>
-            <td class="rankName"><a href="cvPage.php?people=1" target=\"_blank\">Wen Yiran</a></td>
-            <td class="rankPhone">98911715</td>
-            <td class="rankEmail">aieryiran@gmail.com</td>
-            <td class="rankSummary">UI designer; Web developer; Java, C, Objective-C, Javascript, PHP, MySQL; Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text.</td>
           </tr>
         </table>
       </div>
