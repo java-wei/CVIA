@@ -82,7 +82,7 @@ magnetic tunnel junctions”, Scientific Reports, 2014";
 
    function htmlizestring($a){
     $lastPos = 0;
-    while (($lastPos = strpos($a, "@", $lastPos))!== false) {
+    //while (($lastPos = strpos($a, "@", $lastPos))!== false) {
             $b4 = stristr($a,"@",true);
             $b4pos = strripos($b4," ")+1;
             $b4 = trim(substr($b4,$b4pos));
@@ -95,7 +95,7 @@ magnetic tunnel junctions”, Scientific Reports, 2014";
             $email = $b4.$after;
             echo $email;
             $lastPos = $lastPos + 1;   
-        }   
+    //    }   
    }
 function extract_name($str) {
     $str = strip_tags($str);
@@ -120,21 +120,18 @@ function matching($cv, array $arr){
     echo $counter;
 }
 function findPhoneNumber($str){
-    $str = strip_tags($str);
-    $Number = null;
-    foreach(preg_split('/([^A-Za-z0-9üß\-\@\.\(\)\& .])+/', $str) as $token) {
-        if(preg_match('/([A-Za-z\&.])+ ([A-Za-z.])+/', $token) && !preg_match('/([A-Za-zß])+ ([0-9])+/', $token)){
-            //echo("N:$token<br />");
-            $Number = $token;
-            echo $Number;
-        }
-    }
+
+
+$regex = '(\d{4}\s*-?\s*\d{4})'; 
+
+preg_match_all($regex, $str, $matches);
+print_r($matches);
 }
 
 //extract_name($str);
 findPhoneNumber($str);
-$keywords = array("Xuepeng Qiu", "Praveen Deorani");
-//matching($str, $keywords);
+//$keywords = array("Xuepeng Qiu", "Praveen Deorani");
+////matching($str, $keywords);
 //htmlizestring($str);
 ?>
 </body>
