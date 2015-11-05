@@ -11,6 +11,11 @@ define('DBUSER','root');
 define('DBPASS','');
 define('DBNAME','cvia');
 
+//database credentials
+define('USER_TABLE','members');
+define('JOB_TABLE','job');
+define('CV_TABLE','cv');
+
 //application address
 define('DIR','http://localhost:8081/CVIA/');
 

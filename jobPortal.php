@@ -21,12 +21,6 @@
   <body>
     <?php
       require_once('includes/config.php');
-
-      $connector = mysql_connect(DBHOST,DBUSER,DBPASS)
-          or die("Unable to connect");
-        //echo "Connections are made successfully::";
-      $selected = mysql_select_db("CViA", $connector)
-        or die("Unable to connect");
     ?>  
 
     <div id="loginBox" style="display:none;"> 
@@ -159,8 +153,7 @@
               <td class="jobStatus">CLOSE DATE</td>
             </tr>
             <?php
-            $tableName = 'Job';
-            $sql = "SELECT * FROM ".$tableName;
+            $sql = "SELECT * FROM ".JOB_TABLE;
             $jobResult = mysql_query($sql);
             $num_rows = mysql_num_rows($jobResult);
             $count = 0;
