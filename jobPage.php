@@ -129,7 +129,7 @@
             <td><?php echo $row["job_company"]?></td>
           </tr>
           <tr class="oddLine">
-            <td class="jtLabel">Post Date</td>
+            <td class="jtLabel">Close Date</td>
             <td>2015-2-11</td>
           </tr>
           <tr class="evenLine">
@@ -141,11 +141,6 @@
             <td>12</td>
           </tr>
         </table>
-        <?php
-          if (($user->is_logged_in()) && ($userID == $row["owner_id"])){
-            echo "<button id=\"checkRankingButton\" class=\"btn btn-default btn-lg\" type=\"button\" style=\"margin-top:20px;\">Check Ranking</button>";
-          }
-        ?>
       </div>
 
       <div id="body">
@@ -153,9 +148,14 @@
         <?php
           echo '<form id="phpCVForm" action="uploadCV.php?jobID='.$jobID.'" method="post" enctype="multipart/form-data">';
         ?>
-          <input id="phpCVButton" type="file" name="myFile" accept="application/pdf" value="Choose file" />
+          <input id="phpCVButton" type="file" name="myFile" accept="application/pdf" value="Choose CV to Upload" />
           <button class="UploadCVButton btn btn-default btn-lg" button type="submit" name="btn-upload">Submit CV</button>
         </form>
+        <?php
+          if (($user->is_logged_in()) && ($userID == $row["owner_id"])){
+            echo "<hr><button id=\"checkRankingButton\" class=\"btn btn-default btn-lg\" type=\"button\">Check Candidates Ranking</button>";
+          }
+        ?>
         </div>
         <br/><br/>
         <?php
@@ -184,18 +184,20 @@
         <hr>
         <table class="rankTable">
           <tr class="rankLabel">
-            <td class="rankIndex">RANK</td>
+            <td class="rankIndex">No.</td>
             <td class="rankName">NAME</td>
             <td class="rankPhone">PHONE</td>
             <td class="rankEmail">EMAIL</td>
             <td class="rankSummary">SUMMARY</td>
+            <td class="rankViewCV">CV</td>
           </tr>
           <tr class="rankEntry oddLine">
             <td class="rankIndex">1</td>
-            <td class="rankName"><a href="cvPage.php?people=1" target=\"_blank\">Wen Yiran</a></td>
+            <td class="rankName"><a href="cvPage.php?cv_id=1" target=\"_blank\">Wen Yiran</a></td>
             <td class="rankPhone">98911715</td>
             <td class="rankEmail">aieryiran@gmail.com</td>
             <td class="rankSummary">UI designer; Web developer; Java, C, Objective-C, Javascript, PHP, MySQL; Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text.</td>
+            <td class="rankViewCV"><a id="rankViewCVButton" href="download.php?id=<?php echo $_GET['cv'] ?>">View CV</a></td>
           </tr>
         </table>
       </div>

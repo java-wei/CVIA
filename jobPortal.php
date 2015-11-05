@@ -156,7 +156,7 @@
               <td class="jobTitle">POSITION</td>
               <td class="jobCompany">COMPANY</td>
               <td class="jobDescription">DESCRIPTION</td>
-              <td class="jobStatus">STATUS</td>
+              <td class="jobStatus">CLOSE DATE</td>
             </tr>
             <?php
             $tableName = 'Job';
@@ -178,12 +178,7 @@
               "<td class=\"jobTitle\"><a href=\"jobPage.php?job=".$row["job_id"]."\" target=\"_blank\">".$row["job_title"]."</a></td>
               <td class=\"jobCompany\">".$row["job_company"]."</td>
               <td class=\"jobDescription\">".$row["job_description"]."</td>
-              <td class=\"jobStatus\">
-              <form action=\"uploadCV.php?jobID=".$row["job_id"]."\" method=\"post\" enctype=\"multipart/form-data\">
-                <input type=\"file\" name=\"UploadFile\" id=\"myFile\" class=\"homereportupload\" accept=\"application/pdf\">
-                <button class=\"UploadCVButton btn btn-default btn-lg\" button type=\"submit\" name=\"btn-upload\">Submit CV</button>
-              </form>
-              </td>
+              <td class=\"jobStatus\">2015-2-11</td>
               </tr>";
               $count = $count + 1;
             }

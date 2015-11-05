@@ -27,12 +27,7 @@
         }
       }
 
-    $connector = mysql_connect(DBHOST,DBUSER,DBPASS)
-      or die("Unable to connect");
-    //echo "Connections are made successfully::";
-    $selected = mysql_select_db("CViA", $connector)
-      or die("Unable to connect");
-    $peopleID = $_GET["people"];
+    $peopleID = $_GET["cv_id"];
     $tableName = 'CV';
     $sql = "SELECT * FROM ".$tableName." WHERE cv_id = ".$peopleID;
     $cvResult = mysql_query($sql);
@@ -46,7 +41,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Wen Yiran</title>
+    <title><?php echo $row["cv_name"] ?></title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -151,23 +146,23 @@
         <table class="jobDescriptionTable">
           <tr class="oddLine">
             <td class="jtLabel">Name</td>
-            <td><?php echo $row["job_title"]?></td>
+            <td><?php echo $row["cv_name"]?></td>
           </tr>
           <tr class="evenLine">
             <td class="jtLabel">Contact Number</td>
-            <td><?php echo $row["company"]?></td>
+            <td><?php echo $row["cv_phone"]?></td>
           </tr>
           <tr class="oddLine">
             <td class="jtLabel">Email Address</td>
-            <td>2015-2-11</td>
+            <td><?php echo $row["cv_email"] ?></td>
           </tr>
           <tr class="evenLine">
-            <td class="jtLabel">CV Summary</td>
-            <td class="jtDescription"><?php echo $row["job_description"]?></td>
+            <td class="jtLabel">Date of Applying</td>
+            <td>2015-2-11</td>
           </tr>
           <tr class="oddLine">
-            <td class="jtLabel">Date of Applying</td>
-            <td>12</td>
+            <td class="jtLabel">CV Summary</td>
+            <td class="jtDescription"><?php echo $row["cv_description"]?></td>
           </tr>
         </table>
       </div>
