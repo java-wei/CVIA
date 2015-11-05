@@ -20,8 +20,8 @@ if(isset($_POST['btn-upload']))
 	}
 
 	move_uploaded_file($file_loc,$folder.$file);
-	$cv_description = extractPDF(dirname(__FILE__)."\CVs\\".$file);
-	
+	$cv_description = extractPDF(dirname(__FILE__)."/CVs/".$file);
+	// var_dump($cv_description);
     $sql = "INSERT INTO cv (cv_description, cv_keyword)
                 VALUES ('$cv_description', NULL);";
     $result = mysql_query($sql);

@@ -9,9 +9,6 @@
     $jobResult = mysql_query($sql);
     $num_rows = mysql_num_rows($jobResult);
     $row = mysql_fetch_assoc($jobResult);
-
-    echo $sql;
-
     $userID = $_SESSION['id'];
   ?>
 
@@ -147,20 +144,20 @@
         <?php
           if (($user->is_logged_in()) && ($userID == $row["owner_id"])){
             echo "<button id=\"checkRankingButton\" class=\"btn btn-default btn-lg\" type=\"button\" style=\"margin-top:20px;\">Check Ranking</button>";
-          } else {
-            echo "<button class=\"UploadCVButton btn btn-default btn-lg\" type=\"button\" style=\"margin-top:20px;\">Submit CV</button>";
           }
         ?>
       </div>
 
       <div id="body">
+        <div id="uploadCVSection">
         <?php
-          echo '<form action="uploadCV.php?jobID='.$jobID.'" method="post" enctype="multipart/form-data">';
+          echo '<form id="phpCVForm" action="uploadCV.php?jobID='.$jobID.'" method="post" enctype="multipart/form-data">';
         ?>
-          <input type="file" name="myFile" accept="application/pdf" value="Choose file" />
+          <input id="phpCVButton" type="file" name="myFile" accept="application/pdf" value="Choose file" />
           <button class="UploadCVButton btn btn-default btn-lg" button type="submit" name="btn-upload">Submit CV</button>
         </form>
-        <br /><br />
+        </div>
+        <br/><br/>
         <?php
           if(isset($_GET['status']) and $_GET['status'] === 'success' and isset($_GET['cv']))
           {
