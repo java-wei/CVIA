@@ -9,6 +9,9 @@
     $jobResult = mysql_query($sql);
     $num_rows = mysql_num_rows($jobResult);
     $row = mysql_fetch_assoc($jobResult);
+
+    echo $sql;
+
     $userID = $_SESSION['id'];
   ?>
 
@@ -17,7 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title><?php echo $row["job_title"]."-".$row["company"] ?></title>
+    <title><?php echo $row["job_title"]."-".$row["job_company"] ?></title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -126,7 +129,7 @@
           </tr>
           <tr class="evenLine">
             <td class="jtLabel">Company</td>
-            <td><?php echo $row["company"]?></td>
+            <td><?php echo $row["job_company"]?></td>
           </tr>
           <tr class="oddLine">
             <td class="jtLabel">Post Date</td>

@@ -176,7 +176,7 @@
               }
               echo
               "<td class=\"jobTitle\"><a href=\"jobPage.php?job=".$row["job_id"]."\" target=\"_blank\">".$row["job_title"]."</a></td>
-              <td class=\"jobCompany\">".$row["company"]."</td>
+              <td class=\"jobCompany\">".$row["job_company"]."</td>
               <td class=\"jobDescription\">".$row["job_description"]."</td>
               <td class=\"jobStatus\">
               <form action=\"uploadCV.php?jobID=".$row["job_id"]."\" method=\"post\" enctype=\"multipart/form-data\">
