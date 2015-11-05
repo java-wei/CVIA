@@ -173,7 +173,7 @@
             <script>
               alert('error while uploading file');
             </script>
-            <label>Problem While File Uploading !</label>
+            <label>Problem While File Uploading!</label>
         <?php
           }
         ?>
@@ -196,7 +196,7 @@
             <td class="rankPhone">98911715</td>
             <td class="rankEmail">aieryiran@gmail.com</td>
             <td class="rankSummary">UI designer; Web developer; Java, C, Objective-C, Javascript, PHP, MySQL; Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text.</td>
-            <td class="rankViewCV"><a id="rankViewCVButton" href="download.php?id=<?php echo $_GET['cv'] ?>">View CV</a></td>
+            <td class="rankViewCV"><a id="rankViewCVButton" href="download.php?id=1">View CV</a></td>
           </tr>
         </table>
       </div>
