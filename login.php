@@ -10,12 +10,13 @@ if(isset($_POST['submit'])){
 	
 	if($user->login($username,$password)){ 
 		$_SESSION['username'] = $username;
-		header('Location: index.php?action=login');
+		header('Location: index.php?action=loginSuccess');
 		exit;
 	
 	} else {
 		//$error[] = 'Wrong username or password or your account has not been activated.';
-		echo "yes";
+		header('Location: index.php?action=loginFail');
+		exit;
 	}
 
 }//end if submit
