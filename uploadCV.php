@@ -32,10 +32,9 @@ if(isset($_POST['btn-upload']))
     $CV_id = $row['Identity'];
     $_SESSION['cv_description'][$CV_id] = $cv_description;
 
-  
+  	move_uploaded_file($file_loc,$folder.$file);
   	unlink($folder.$file);
-  	// header('Location: CVParser.php?job='.$_GET['jobID'].'&cv='.$CV_id);
-	header('Location: jobPage.php?job='.$job_id.'&cv='.$CV_id.'&status=success');
+  	header('Location: CVParser.php?job='.$_GET['jobID'].'&cv='.$CV_id);
 }
 else {
 	header('Location: jobPage.php?job='.$_GET['jobID'].'&status=fail');

@@ -12,8 +12,19 @@ $cv_description = $_SESSION['cv_description'][$CV_id];
 $sql = "SELECT * FROM Job WHERE job_id = ".$job_id;
 $result = mysql_query($sql);
 $row = mysql_fetch_assoc($result);
-$job_keyword_string = $row['job_keyword'];
-$job_keywords = explode(",", $job_keyword_string);
+
+$job_keyword= $row['job_keyword'];
+$job_keyword_string = explode(",", $job_keyword);
+
+$importance = $row['keyword_importance'];
+$importance_string = explode(",", $importance);
+
+
+$fullMark = 0;
+foreach ($job_keyword_string as $index => $keyword) {
+    $job_keyword_arr[$keyword] = $importance_string[$index];
+    $fullMark += $importance_string[$index];
+}
 
 # Extract the cv information
 $cv_email = findEmail($cv_description);
@@ -21,19 +32,21 @@ $cv_phone = findPhoneNumber($cv_description);
 $cv_name = findName($cv_description);
 $cv_description = $_SESSION['cv_description'][$CV_id];
 
-echo "$cv_email     $cv_phone            $cv_name";
+$result = matchingJobAndCV($cv_description, $job_keyword_arr);
+foreach ($result as $key => $value) {
+    $matched_keyword = $key;
+    $grade = $value;
+}
+$percentage = round($grade / $fullMark * 100, 2);
 
-exit(0);
-$matching_keywords = matchingJobAndCV($cv_description, $job_keywords);
-$grades = count($matching_keywords) / count($job_keywords) * 100;
 
 # Update the cv information in database
-$sql = "UPDATE ".CV_TABLE." SET cv_keyword = '$matching_keywords', cv_name = '$cv_name', cv_phone = '$cv_phone',
-        cv_email = '$cv_email' WHERE cv_job_id = '$job_id';";
-
-// var_dump($sql);
+$sql = "UPDATE ".CV_TABLE." SET cv_keyword = '$matched_keyword', cv_name = '$cv_name', cv_phone = '$cv_phone',
+        cv_email = '$cv_email', cv_grade = '$percentage' WHERE cv_id = '$CV_id';";
 
 $result = mysql_query($sql);
+
+
 
 function findEmail($a){
     $lastPos = 0;
@@ -47,7 +60,7 @@ function findEmail($a){
     }else{
         $after=trim(stristr($after," ",true));
     }
-    $email = $b4.$after;
+    $email = removeLastOccurence($b4.$after, ';');
     return $email;
 }
 
@@ -81,17 +94,31 @@ function findPhoneNumber($str){
 }
 
 function matchingJobAndCV($cv, $arr){
-    $counter = 0;
-    foreach($arr as $a) {
-        if (stripos($cv,$a) !== false){
-            $matching["$a"] = $a;
+    $mark = 0;
+    $matched_keyword = "";
+
+    foreach($arr as $k => $v) {
+        if (stripos($cv,$k) !== false){
+            $mark += $v;
+            $matched_keyword = $matched_keyword.$k.", ";
         }
     }
-    return matching;
+
+    $matched_keyword = removeLastOccurence($matched_keyword, ", ");
+    $result[$matched_keyword] = $mark;
+    return $result;
 }
 
+function removeLastOccurence($subject, $search){
+    $index = strripos($subject,$search);
+    if($index !== false){
+        $subject = substr($subject, 0, $index);
+    }
 
+    return $subject;
+}
 
+header('Location: jobPage.php?job='.$job_id.'&cv='.$CV_id.'&status=success');
 ?>
 </body>
 </html>
