@@ -52,7 +52,7 @@
           <button class="cancelButton"><img src="files/cancel.png"></button>
         </div>
         <hr>
-        <form name="login" action="" method="post">
+        <form name="login" action="postJob.php" method="post">
           <table class="popupFormTable">
             <tr>
               <td class="inputLabel">Job Name:</td>
@@ -68,15 +68,15 @@
             </tr>
             <tr>
               <td class="inputLabel">Keywords:</td>
-              <td class="inputBox"><input id="tagInputBox" name="jobKeyword" size="14"/></td>
+              <td class="inputBox"><input id="tagInputBox" size="14"/></td>
               <td>
-                <select id="importanceSelect" name="jobImportantce">
+                <select id="importanceSelect">
                   <option value="1">Very Important</option>
                   <option value="2" selected>Important</option>
                   <option value="3">Less Important</option>
                 </select>
               </td>
-              <td><button id="addKeywordButton" type="button" class="btn btn-default btn-lg">Add</button></td>
+              <td><button id="addKeywordButton" type="button" name="button" class="btn btn-default btn-lg">Add</button></td>
             </tr>
           </table>
         <div id="tagArea">
@@ -229,7 +229,7 @@
               <td class="jobStatus">CLOSE DATE</td>
             </tr>
             <?php
-            $sql = "SELECT * FROM ".JOB_TABLE;
+            $sql = "SELECT * FROM ".JOB_TABLE." ORDER BY job_id DESC";
             $jobResult = mysql_query($sql);
             $num_rows = mysql_num_rows($jobResult);
             $count = 0;
