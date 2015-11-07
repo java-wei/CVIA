@@ -199,7 +199,7 @@
 
 
       <?php 
-        if (isset($_POST['search_button'])) 
+        if ((isset($_POST['search_button'])) || ($_POST['search_keyword'] == null)) 
         {
           $keyword = $_POST['search_keyword'];
           $sql = "SELECT * FROM ".JOB_TABLE." WHERE job_title LIKE '%".$keyword."%' or job_keyword LIKE '%".$keyword."%' or job_description LIKE '%".$keyword."%'";
@@ -210,7 +210,7 @@
             echoNoResult();
           } else {
             echoDiv($jobResult);
-          }          
+          }       
         }
 
         function echoDiv($jobResult, $count) {
