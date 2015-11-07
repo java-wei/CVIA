@@ -149,11 +149,11 @@ $("#addKeywordButton").click(function() {
     $("#addKeywordButton").attr("disabled", false);
   }
 
-  if (importance == 1) {
+  if (importance == 3) {
     $("#tagArea").append("<div class=\"tag\"><p style=\"background-color:rgb(38, 144, 219);\">" + tag + "</p></div>");
   } else if (importance == 2) {
     $("#tagArea").append("<div class=\"tag\"><p>" + tag + "</p></div>");
-  } else if (importance == 3) {
+  } else if (importance == 1) {
     $("#tagArea").append("<div class=\"tag\"><p style=\"background-color:rgb(5, 41, 90);\">" + tag + "</p></div>");
   }    
   }

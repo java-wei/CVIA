@@ -80,17 +80,26 @@ hr {
 	height: 50px;
 }
 
+#postJobBox .inputBox {
+	width: 600px;
+}
+
 #importanceSelect{
-	margin-left:-20px;
-	height: 100px;
+	margin-left:-40px;
+	margin-right: 10px;
+	height: 40px;
 }
 
 .inputLabel, #pdfLabel {
-	width: 150px;
+	width: 120px;
 	text-align: right;
 	font-size: 15px;
 	font-family: arial;
 	color: rgb(36, 108, 167);
+}
+
+#postJobBox .inputLabel {
+	width: 80px;
 }
 
 #pdfLabel {
@@ -221,8 +230,8 @@ hr {
 #postJobBox {
 	top: 20%;
 	height: 50em;
-	left: 42%;
-    width: 45em;
+	left: 35%;
+    width: 60em;
 }
 
 #postJobBox #jobSubmitButton {
@@ -472,7 +481,7 @@ hr {
 
 #tagArea {
 	text-align: left;
-	width: 500px;
+	width: 90%;
 	margin: 0 auto;
 	margin-top: 20px;
 }
@@ -487,8 +496,8 @@ hr {
 	display: inline-block;
 	margin-left: 10px;
 	margin-right: 10px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 5px;
