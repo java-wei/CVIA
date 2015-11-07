@@ -77,13 +77,6 @@
           </table>
         <div id="tagArea">
         </div>
-        <p id="pdfLabel">Description PDF:</p>
-        <?php
-          echo '<form id="phpJobDescriptionForm" action="uploadCV.php?jobID='.$jobID.'" method="post" enctype="multipart/form-data">';
-              ?>
-              <input id="phpJobDescriptionButton" type="file" name="myFile" accept="application/pdf" value="Choose CV to Upload" />
-              <button class="btn btn-default btn-lg" button type="submit" name="btn-upload">Submit CV</button>
-        </form>
         <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Post" id="jobSubmitButton"/></center>
       </form>
     </div>
