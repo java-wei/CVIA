@@ -164,7 +164,7 @@
               <td class="jobStatus">CLOSE DATE</td>
             </tr>
             <?php
-            $sql = "SELECT * FROM ".JOB_TABLE;
+            $sql = "SELECT * FROM ".JOB_TABLE." ORDER BY job_id DESC";
             $jobResult = mysql_query($sql);
             $num_rows = mysql_num_rows($jobResult);
             $count = 0;
