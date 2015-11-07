@@ -182,7 +182,7 @@
           }       
         }
 
-        function echoDiv($jobResult, $count) {
+        function echoDiv($jobResult) {
           echo "<div class=\"jobList\">
                   <table class=\"jobTable\" style=\"width:100%;\">
                     <tr class=\"tableLabel\">
