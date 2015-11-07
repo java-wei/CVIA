@@ -8,7 +8,9 @@
     $jobResult = mysql_query($sql);
     $num_rows = mysql_num_rows($jobResult);
     $row = mysql_fetch_assoc($jobResult);
-    $userID = $_SESSION['id'];
+    if ($user->is_logged_in()){
+      $userID = $_SESSION['id'];
+    }
   ?>
 
   <head>
