@@ -44,6 +44,9 @@ $("#registerSubmitButton").click(function() {
 $("#jobSubmitButton").click(function() {
   $("#postJobBox").fadeOut("slow");
   $("#blockMask").fadeOut("slow");
+
+  //$.post('test.php', {variable: "hellp"});
+  document.cookie = "variable="+"askdhfkjashdfjklashf";
 });
 
 $("#LogoutButton").click(function() {
