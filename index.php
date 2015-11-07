@@ -199,7 +199,7 @@
 
 
       <?php 
-        if ((isset($_POST['search_button'])) || ($_POST['search_keyword'] == null)) 
+        if (isset($_POST['search_button'])) 
         {
           $keyword = $_POST['search_keyword'];
           $sql = "SELECT * FROM ".JOB_TABLE." WHERE job_title LIKE '%".$keyword."%' or job_keyword LIKE '%".$keyword."%' or job_description LIKE '%".$keyword."%'";
