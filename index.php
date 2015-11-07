@@ -29,9 +29,12 @@
           case 'active':
             echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
             break;
-          case 'login' :
-            //echo "<h2 class='bg-success' id='loginSuccess'>Login successfully.</h2>";
-              echo "<script>$(\"#blockMask\").fadeIn(\"slow\");</script>";
+          case 'loginSuccess' :
+              echo "<h2 class='bg-success' id='loginSuccess'>Login successfully.</h2>";
+              // echo "<script>$(\"#blockMask\").fadeIn(\"slow\");</script>";
+            break;
+          case 'loginFail' :
+              echo "<h2 class='bg-success' id='loginSuccess'>Login Fail.</h2>";
             break;
           case 'joined' :
             echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";

@@ -2,6 +2,8 @@
 require_once('pdfExtractor.php'); 
 require_once('includes/config.php'); 
 
+$job_id = $_GET['jobID'];
+
 if(isset($_POST['btn-upload']))
 {    
 	$file = $_FILES['myFile']['name'];
@@ -19,9 +21,8 @@ if(isset($_POST['btn-upload']))
 
 	move_uploaded_file($file_loc,$folder.$file);
 	$cv_description = escapeQuote(extractPDF(dirname(__FILE__)."/CVs/".$file));
-	
-	$sql = "INSERT INTO ".CV_TABLE." (cv_description, cv_keyword)
-                VALUES ('$cv_description', NULL);";
+	$sql = "INSERT INTO ".CV_TABLE." (cv_description, cv_job_id)
+                VALUES ('$cv_description', '$job_id');";
     $result = mysql_query($sql);
     // echo mysql_errno($connector) . ": " . mysql_error($connector) . "\n";
     // var_dump($result);
@@ -34,7 +35,7 @@ if(isset($_POST['btn-upload']))
   
   	unlink($folder.$file);
   	// header('Location: CVParser.php?job='.$_GET['jobID'].'&cv='.$CV_id);
-	header('Location: jobPage.php?job='.$_GET['jobID'].'&cv='.$CV_id.'&status=success');
+	header('Location: jobPage.php?job='.$job_id.'&cv='.$CV_id.'&status=success');
 }
 else {
 	header('Location: jobPage.php?job='.$_GET['jobID'].'&status=fail');
@@ -46,8 +47,10 @@ function escapeQuote($cv_description) {
   	}
 
 	if(strrpos($cv_description, "\"")) {
-  		$path = str_replace("\"","\\\"", $cv_description);
+  		$cv_description = str_replace("\"","\\\"", $cv_description);
   	}  	
+
+  	return $cv_description;
 }
 
 ?>
