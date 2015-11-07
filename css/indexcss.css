@@ -71,7 +71,7 @@ hr {
 }
 
 .popupFormTable {
-	width: 80%;
+	width: 90%;
 	height: 70%;
 	margin-left: 5%;
 }
@@ -80,12 +80,22 @@ hr {
 	height: 50px;
 }
 
-.inputLabel {
+#importanceSelect{
+	margin-left:-20px;
+	height: 100px;
+}
+
+.inputLabel, #pdfLabel {
 	width: 150px;
 	text-align: right;
 	font-size: 15px;
 	font-family: arial;
 	color: rgb(36, 108, 167);
+}
+
+#pdfLabel {
+	padding-left: 20px;
+	width: 180px;
 }
 
 .inputBox {
@@ -141,6 +151,8 @@ hr {
 	padding-top: 2px;
 	padding-bottom: 2px;
 }
+
+
 
 #rankViewCVButton {
 	background-color: white;
@@ -473,8 +485,8 @@ hr {
 .tag p{
 	font-size: 15px;
 	display: inline-block;
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding-left: 10px;

@@ -196,7 +196,7 @@
             <td class="rankPhone">98911715</td>
             <td class="rankEmail">aieryiran@gmail.com</td>
             <td class="rankSummary">UI designer; Web developer; Java, C, Objective-C, Javascript, PHP, MySQL; Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text.</td>
-            <td class="rankViewCV"><a id="rankViewCVButton" href="download.php?id=1">View CV</a></td>
+            <td class="rankViewCV"><a id="rankViewCVButton" href="download.php?id=1" target=\"_blank\">View CV</a></td>
           </tr>
         </table>
       </div>

@@ -65,11 +65,25 @@
             <tr>
               <td class="inputLabel">Description keywords:</td>
               <td class="inputBox"><input id="tagInputBox" name="jobKeyword" size="14"/></td>
+              <td>
+                <select id="importanceSelect">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                </select>
+              </td>
               <td><button id="addKeywordButton" type="button" class="btn btn-default btn-lg">Add</button></td>
             </tr>
           </table>
         <div id="tagArea">
         </div>
+        <p id="pdfLabel">Description PDF:</p>
+        <?php
+          echo '<form id="phpJobDescriptionForm" action="uploadCV.php?jobID='.$jobID.'" method="post" enctype="multipart/form-data">';
+              ?>
+              <input id="phpJobDescriptionButton" type="file" name="myFile" accept="application/pdf" value="Choose CV to Upload" />
+              <button class="btn btn-default btn-lg" button type="submit" name="btn-upload">Submit CV</button>
+        </form>
         <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Post" id="jobSubmitButton"/></center>
       </form>
     </div>

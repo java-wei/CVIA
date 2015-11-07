@@ -1,5 +1,6 @@
 var tagCount = 0;
 var tagArray = [];
+var tagImportance = [];
 
 $("#LoginButton").click(function() {
   $("#loginBox").fadeIn("slow");
@@ -129,11 +130,15 @@ $("#checkRankingButton").click(function() {
 $("#addKeywordButton").click(function() {
   var tag = $("#tagInputBox").val();
   $("#tagInputBox").val("");
+  var importance = $("#importanceSelect").val();
+  $("#importanceSelect").val("2");
 
-  tagCount = tagCount + 1;
-  tagArray.push(tag);
+  if (tag != "") {
+    tagCount = tagCount + 1;
+    tagArray.push(tag);
+    tagImportance.push(importance);
 
-  var tagAreaheight = $("#tagArea").map(function ()
+    var tagAreaheight = $("#tagArea").map(function ()
   {
     return $(this).height();
   }).get();
@@ -144,5 +149,12 @@ $("#addKeywordButton").click(function() {
     $("#addKeywordButton").attr("disabled", false);
   }
 
-  $("#tagArea").append("<div class=\"tag\"><p>" + tag + "</p></div>");    
+  if (importance == 1) {
+    $("#tagArea").append("<div class=\"tag\"><p style=\"background-color:rgb(38, 144, 219);\">" + tag + "</p></div>");
+  } else if (importance == 2) {
+    $("#tagArea").append("<div class=\"tag\"><p>" + tag + "</p></div>");
+  } else if (importance == 3) {
+    $("#tagArea").append("<div class=\"tag\"><p style=\"background-color:rgb(5, 41, 90);\">" + tag + "</p></div>");
+  }    
+  }
 })
