@@ -190,6 +190,11 @@
             <?php
             $count = 0;
             while( $row = mysql_fetch_assoc($jobResult) ){
+
+              $sql = "SELECT * FROM ".CV_TABLE." WHERE cv_job_id = ".$row["job_id"];
+              $result = mysql_query($sql);
+              $numrows = mysql_num_rows($result);
+
               if ($count % 2 == 0) {
                 // oddLine
                 echo
@@ -203,7 +208,7 @@
               "<td class=\"myJobPosition\"><a href=\"jobPage.php?job=".$row["job_id"]."\" target=\"_blank\">".$row["job_title"]."</a></td>
               <td class=\"myJobDescription\">".$row["job_description"]."</td>
               <td class=\"myJobDate\">2015-9-30</td>
-              <td class=\"myJobCandidates\">12</td>
+              <td class=\"myJobCandidates\">".$numrows."</td>
               <td class=\"myJobStatus\">Open</td>
             </tr>";
               $count = $count + 1;

@@ -615,6 +615,10 @@ hr {
 	font-weight: bold;
 }
 
+.rankTable td {
+	min-height: 40px;
+}
+
 .rankEntry {
 	height: 40px;
 }
