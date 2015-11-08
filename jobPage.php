@@ -192,14 +192,34 @@
             <td class="rankSummary">SUMMARY</td>
             <td class="rankViewCV">CV</td>
           </tr>
-          <tr class="rankEntry oddLine">
-            <td class="rankIndex">1</td>
-            <td class="rankName"><a href="cvPage.php?cv_id=1" target=\"_blank\">Wen Yiran</a></td>
-            <td class="rankPhone">98911715</td>
-            <td class="rankEmail">aieryiran@gmail.com</td>
-            <td class="rankSummary">UI designer; Web developer; Java, C, Objective-C, Javascript, PHP, MySQL; Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text. Here is some random text.</td>
-            <td class="rankViewCV"><a id="rankViewCVButton" href="download.php?id=1" target=\"_blank\">View CV</a></td>
-          </tr>
+          <?php
+            require_once('includes/config.php'); 
+
+            $jobID = $_GET["job"];
+            $sql = "SELECT * FROM ".CV_TABLE." WHERE cv_job_id = ".$jobID." ORDER BY cv_grade DESC";
+            $jobResult = mysql_query($sql);
+
+            $index = 0;
+            while ($row = mysql_fetch_array($jobResult, MYSQL_ASSOC)) {
+              $name = $row['cv_name'];
+              $phone = $row['cv_phone'];
+              $email = $row['cv_email'];
+              $summary = $row['cv_keyword'];
+              $id = $row['cv_id'];
+              $index++;
+              echo "
+                 <tr class=\"rankEntry oddLine\">
+                  <td class=\"rankIndex\">$index</td>
+                  <td class=\"rankName\"><a href=\"cvPage.php?cv_id=$id\" target=\"_blank\">$name</a></td>
+                  <td class=\"rankPhone\">$phone</td>
+                  <td class=\"rankEmail\">$email</td>
+                  <td class=\"rankSummary\">$summary</td>
+                  <td class=\"rankViewCV\"><a id=\"rankViewCVButton\" href=\"download.php?id=$id\" target=\"_blank\">View CV</a></td>
+                </tr>
+              ";
+            }
+ 
+          ?>
         </table>
       </div>
     </div>

@@ -168,19 +168,21 @@
 
 
       <?php 
-        if ((isset($_POST['search_button'])) || ($_POST['search_keyword'] == null)) 
-        {
+        if ((isset($_POST['search_button']))) {
           $keyword = $_POST['search_keyword'];
-          $sql = "SELECT * FROM ".JOB_TABLE." WHERE job_title LIKE '%".$keyword."%' or job_keyword LIKE '%".$keyword."%' or job_description LIKE '%".$keyword."%'";
-          $jobResult = mysql_query($sql);
-          $num_rows = mysql_num_rows($jobResult);
-
-          if ($num_rows == 0) {
-            echoNoResult();
-          } else {
-            echoDiv($jobResult);
-          }       
+          $sql = "SELECT * FROM ".JOB_TABLE." WHERE job_title LIKE '%".$keyword."%' or job_keyword LIKE '%".$keyword."%' or job_description LIKE '%".$keyword."%' ORDER BY job_id DESC";
+        } else {
+          $sql = "SELECT * FROM ".JOB_TABLE." ORDER BY job_id DESC";
         }
+
+        $jobResult = mysql_query($sql);
+        $num_rows = mysql_num_rows($jobResult);
+
+        if ($num_rows == 0) {
+          echoNoResult();
+        } else {
+          echoDiv($jobResult);
+        }       
 
         function echoDiv($jobResult) {
           echo "<div class=\"jobList\">
