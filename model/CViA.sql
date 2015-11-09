@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2015 at 03:32 PM
+-- Generation Time: Nov 09, 2015 at 03:09 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `cvia`
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `cv` (
   `cv_email` varchar(64) COLLATE latin1_general_ci DEFAULT NULL,
   `cv_description` longtext COLLATE latin1_general_ci NOT NULL,
   `cv_grade` float NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci COMMENT='Store the CV information';
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci COMMENT='Store the CV information';
 
 --
 -- Dumping data for table `cv`
@@ -60,17 +60,18 @@ CREATE TABLE IF NOT EXISTS `job` (
   `job_keyword` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
   `keyword_importance` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `job_company` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
-  `job_duedate` date DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci COMMENT='Store the job information';
+  `job_duedate` date DEFAULT NULL,
+  `job_postdate` varchar(10) COLLATE latin1_general_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci COMMENT='Store the job information';
 
 --
 -- Dumping data for table `job`
 --
 
-INSERT INTO `job` (`job_id`, `owner_id`, `job_title`, `job_description`, `job_keyword`, `keyword_importance`, `job_company`, `job_duedate`) VALUES
-(1, 1, 'Web Designer', 'Passionate in Mobile Applications, Mobile OS and Web technologies. Technical knowledge in Objective C, C++, and/or HTML5 Javascript, Python. Experience with web service integration (JSON, XML, SOAP, REST) will be added advantage. Team Player and able to work independently with little supervision, we love go­getters! Good communication skills, working attitude and interpersonal skills.', 'Market Clearing Engine,market analysis,First class,Operations Research,Computer Science, VB.NET,Java,C#,Oracle SQL,statistical and mathematical modeling', '1,2,3,1,2,3,1,2,3,1', 'Garena', NULL),
-(2, 1, 'Web Developer', 'Common entry-level job titles in Web development include Web designer, webmaster and graphic artist. Increased education and work experience can lead to advanced positions such as senior Web developer, designer and software designer. The U.S. Bureau of Labor Statistics (BLS) forecast that careers in Web development would grow by 20% from 2012-2022, which was faster than average (www.bls.gov). Web developers with programming and multimedia expertise should have the best job prospects. As of May 2013, the mean annual wage for Web developers was $67,540, according to the BLS.', 'Web developer,PHP,HTML,CSS', '1,2,2,1', 'National University of Singapore', NULL),
-(3, 2, 'iOS developer', 'The work:\r\n\r\nWork with a small team of top-tier developers who are designing great user experiences and building truly great applications for iOS devices\r\n\r\nParticipate in scrums consisting of cross functional teams, both software and hardware\r\n\r\nEnsure that features are being delivered efficiently and on-time\r\n\r\nIn addition to code contribution, you will also participate in architectural review and design', 'iOS,Apple', '2,2', 'Vincense', NULL);
+INSERT INTO `job` (`job_id`, `owner_id`, `job_title`, `job_description`, `job_keyword`, `keyword_importance`, `job_company`, `job_duedate`, `job_postdate`) VALUES
+(1, 1, 'Web Designer', 'Passionate in Mobile Applications, Mobile OS and Web technologies. Technical knowledge in Objective C, C++, and/or HTML5 Javascript, Python. Experience with web service integration (JSON, XML, SOAP, REST) will be added advantage. Team Player and able to work independently with little supervision, we love go­getters! Good communication skills, working attitude and interpersonal skills.', 'Market Clearing Engine,market analysis,First class,Operations Research,Computer Science, VB.NET,Java,C#,Oracle SQL,statistical and mathematical modeling', '1,2,3,1,2,3,1,2,3,1', 'Garena', '2016-01-20', '2015-11-09'),
+(2, 1, 'Web Developer', 'Common entry-level job titles in Web development include Web designer, webmaster and graphic artist. Increased education and work experience can lead to advanced positions such as senior Web developer, designer and software designer. The U.S. Bureau of Labor Statistics (BLS) forecast that careers in Web development would grow by 20% from 2012-2022, which was faster than average (www.bls.gov). Web developers with programming and multimedia expertise should have the best job prospects. As of May 2013, the mean annual wage for Web developers was $67,540, according to the BLS.', 'Web developer,PHP,HTML,CSS', '1,2,2,1', 'National University of Singapore', '2015-10-14', '2015-09-21'),
+(3, 2, 'iOS developer', 'The work:\r\n\r\nWork with a small team of top-tier developers who are designing great user experiences and building truly great applications for iOS devices\r\n\r\nParticipate in scrums consisting of cross functional teams, both software and hardware\r\n\r\nEnsure that features are being delivered efficiently and on-time\r\n\r\nIn addition to code contribution, you will also participate in architectural review and design', 'iOS,Apple', '2,2', 'Vincense', '2015-12-31', '2015-02-03');
 
 -- --------------------------------------------------------
 
@@ -127,12 +128,12 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `cv`
 --
 ALTER TABLE `cv`
-  MODIFY `cv_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
+  MODIFY `cv_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `job_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `job_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `members`
 --

@@ -22,113 +22,20 @@
     <?php
       require_once('../controller/processAction.php'); 
       $_SESSION['location'] = "../view/aboutUs.php";
+      require_once('loginView.php'); 
+      require_once('registerView.php'); 
     ?>
-    <div id="loginBox" style="display:none;"> 
-        <div style="position: relative;">
-          <p class="popupHead">Login</p>
-          <button class="cancelButton"><img src="icons/cancel.png"></button>
-        </div>
-        <hr>
-        <form name="login" action="login.php" method="post">
-          <table class="popupFormTable">
-            <tr>
-              <td class="inputLabel">Username:</td>
-              <td class="inputBox"><input name="username" size="14"/></td>
-            </tr>
-            <tr>
-              <td class="inputLabel">Password:</td>
-              <td class="inputBox"><input name="password" type="password" size="14"/></td>
-            </tr>
-          </table>
-        <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Login" id="loginSubmitButton"/></center>
-        </form>
-        <p class="assistantButton"><a href='reset.php'>Forgot your Password?</a></p>
-        <p class="assistantButton"><a href='signup.php'>Create Account</a></p>
-    </div>
+    
 
-    <div id="registerBox" style="display:none;"> 
-        <div style="position: relative;">
-          <p class="popupHead">Register</p>
-          <button class="cancelButton"><img src="icons/cancel.png"></button>
-        </div>
-        <hr>
-        <form name="register" action="signup.php" method="post">
-          <table class="popupFormTable">
-            <tr>
-              <td class="inputLabel">Username:</td>
-              <td class="inputBox"><input name="username" size="14"/></td>
-            </tr>
-            <tr>
-              <td class="inputLabel">Email:</td>
-              <td class="inputBox"><input name="email" type="email" size="14" /></td>
-            </tr>
-            <tr>
-              <td class="inputLabel">Password:</td>
-              <td class="inputBox"><input name="password" type="password" size="14"/></td>
-            </tr>
-            <tr>
-              <td class="inputLabel">Confirm Password:</td>
-              <td class="inputBox"><input name="passwordConfirm" type="password" size="14"/></td>
-            </tr>
-          </table>
-        <hr>
-        <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Register" id="registerSubmitButton"/></center>
-        </form>
-    </div>
-
-    <div id="blockMask" style="display: none;">
-    </div>
+    <div id="blockMask" style="display: none;"></div>
 
     <div id="wrapper">
-      <div class="header">
-        <div class="logoSection span_4 column">
-          <p id="bigHeading">CViA</p>
-        </div>
-        <div class="tabSection span_8 column">
-          <div class="tabs">
-            <a href="index.php">Home Page</a>
-            <a href="jobPortal.php">Job Portal</a>
-            <a href="#" style="color:rgb(7, 68, 119);">About Us</a>
-            <?php
-              if ($user->is_logged_in()){
-                echo "<a href=\"myAccount.php\">My Account</a>";
-              }
-            ?>
-          </div>
-          <div class="buttons">
-             <?php
-              if ($user->is_logged_in()){
-                echo "<button id=\"LogoutButton\" type=\"button\" class=\"btn btn-default btn-lg\">Logout</button>";
-              } else {
-                echo "<button id=\"LoginButton\" type=\"button\" class=\"btn btn-default btn-lg\">Login</button>
-                      <button id=\"RegisterButton\" type=\"button\" class=\"btn btn-default btn-lg\">Register</button>";
-              }
-            ?>
-          </div>
-        </div>
-      </div>
+      <?php
+        require_once('tabbarView.php'); 
+        require_once('introductionView.php'); 
+      ?>
+    </div>
 
-      <hr>
-
-      <div class="selfIntroduction">
-        <p class="oneSentence">The CViA website is developed by three Year-4 computer-science students from National Unversotity of Singapore(NUS).</p>
-        <table>
-          <tr>
-            <td class="name"><p>Cheng Yingjie</p></td>
-            <td class="description"><p>People find me to be an upbeat, self-motivated team player with excellent communication skills. For the past several years I have worked in lead qualification, telemarketing, and customer service in the technology industry. My experience includes successfully calling people in director-level positions of technology departments and developing viable leads. I have a track record of maintaining a consistent call and activity volume and consistently achieving the top 10 percent in sales, and I can do the same thing for your company.</p></td>
-          </tr>
-          <tr>
-            <td class="name"><p>Wen Yiran</p></td>
-            <td class="description"><p>I am a dedicated person with a family of four. I enjoy reading, and the knowledge and perspective that my reading gives me has strengthened my teaching skills and presentation abilities. I have been successful at raising a family, and I attribute this success to my ability to plan, schedule, and handle many different tasks at once. This flexibility will help me in the classroom, where there are many different personalities and learning styles.</p></td>
-          </tr>
-          <tr>
-            <td class="name"><p>Zhang Chengwei</p></td>
-            <td class="description"><p>People find me to be an upbeat, self-motivated team player with excellent communication skills. For the past several years I have worked in lead qualification, telemarketing, and customer service in the technology industry. My experience includes successfully calling people in director-level positions of technology departments and developing viable leads. I have a track record of maintaining a consistent call and activity volume and consistently achieving the top 10 percent in sales, and I can do the same thing for your company.</p></td>
-          </tr>
-        </table>
-      </div>
-
-      <hr>
 
     </div>
 

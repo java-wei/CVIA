@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title><?php echo $row["job_title"]."-".$row["job_company"] ?></title>
+    <title>Job Page</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -36,202 +36,22 @@
 
       $sql = "SELECT * FROM ".CV_TABLE." WHERE cv_job_id = ".$jobID;
       $result = mysql_query($sql);
+
+      require_once('loginView.php'); 
+      require_once('registerView.php'); 
     ?>
-    
-    <div id="loginBox" style="display:none;"> 
-        <div style="position: relative;">
-          <p class="popupHead">Login</p>
-          <button class="cancelButton"><img src="icons/cancel.png"></button>
-        </div>
-        <hr>
-        <form name="login" action="../controller/login.php" method="post">
-          <table class="popupFormTable">
-            <tr>
-              <td class="inputLabel">Username:</td>
-              <td class="inputBox"><input name="username" size="14"/></td>
-            </tr>
-            <tr>
-              <td class="inputLabel">Password:</td>
-              <td class="inputBox"><input name="password" type="password" size="14"/></td>
-            </tr>
-          </table>
-        <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Login" id="loginSubmitButton"/></center>
-        </form>
-        <p class="assistantButton"><a href='../controller/reset.php'>Forgot your Password?</a></p>
-        <p class="assistantButton"><a href='../controller/signup.php'>Create Account</a></p>
-    </div>
 
-    <div id="registerBox" style="display:none;"> 
-        <div style="position: relative;">
-          <p class="popupHead">Register</p>
-          <button class="cancelButton"><img src="icons/cancel.png"></button>
-        </div>
-        <hr>
-        <form name="register" action="../controller/signup.php" method="post">
-          <table class="popupFormTable">
-            <tr>
-              <td class="inputLabel">Username:</td>
-              <td class="inputBox"><input name="username" size="14"/></td>
-            </tr>
-            <tr>
-              <td class="inputLabel">Email:</td>
-              <td class="inputBox"><input name="email" type="email" size="14" /></td>
-            </tr>
-            <tr>
-              <td class="inputLabel">Password:</td>
-              <td class="inputBox"><input name="password" type="password" size="14"/></td>
-            </tr>
-            <tr>
-              <td class="inputLabel">Confirm Password:</td>
-              <td class="inputBox"><input name="passwordConfirm" type="password" size="14"/></td>
-            </tr>
-          </table>
-        <hr>
-        <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Register" id="registerSubmitButton"/></center>
-        </form>
-    </div>
-
-    <div id="blockMask" style="display: none;">
-    </div>
+    <div id="blockMask" style="display: none;"></div>
 
     <div id="wrapper">
-      <div class="header">
-        <div class="logoSection span_4 column">
-          <p id="bigHeading">CViA</p>
-        </div>
-        <div class="tabSection span_8 column">
-          <div class="tabs">
-            <a href="index.php">Home Page</a>
-            <a href="jobPortal.php" style="color:rgb(7, 68, 119);">Job Portal</a>
-            <a href="aboutUs.php">About Us</a>
-            <?php
-              if ($user->is_logged_in()){
-                echo "<a href=\"myAccount.php\">My Account</a>";
-              }
-            ?>
-          </div>
-          <div class="buttons">
-            <?php
-              if ($user->is_logged_in()){
-                echo "<button id=\"LogoutButton\" type=\"button\" class=\"btn btn-default btn-lg\">Logout</button>";
-              } else {
-                echo "<button id=\"LoginButton\" type=\"button\" class=\"btn btn-default btn-lg\">Login</button>
-                      <button id=\"RegisterButton\" type=\"button\" class=\"btn btn-default btn-lg\">Register</button>";
-              }
-            ?>
-          </div>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="jobDescriptionPane">
-        <table class="jobDescriptionTable">
-          <tr class="oddLine">
-            <td class="jtLabel">Job Name</td>
-            <td><?php echo $row["job_title"]?></td>
-          </tr>
-          <tr class="evenLine">
-            <td class="jtLabel">Company</td>
-            <td><?php echo $row["job_company"]?></td>
-          </tr>
-          <tr class="oddLine">
-            <td class="jtLabel">Close Date</td>
-            <td><?php echo $row["job_duedate"]?></td>
-          </tr>
-          <tr class="evenLine">
-            <td class="jtLabel">Key Requirement</td>
-            <td class="jtDescription"><?php echo $row["job_description"]?></td>
-          </tr>
-          <tr class="oddLine">
-            <td class="jtLabel">No. of Applicants</td>
-            <td>
-              <?php 
-                $numrows = mysql_num_rows($result);
-                echo $numrows;
-              ?>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div id="body">
-        <div id="uploadCVSection">
-        <?php
-          echo '<form id="phpCVForm" action="../controller/uploadCV.php?jobID='.$jobID.'" method="post" enctype="multipart/form-data">';
-        ?>
-          <input id="phpCVButton" type="file" name="myFile" accept="application/pdf" value="Choose CV to Upload" />
-          <button class="UploadCVButton btn btn-default btn-lg" button type="submit" name="btn-upload">Submit CV</button>
-        </form>
-        <?php
-          if (($user->is_logged_in()) && ($userID == $row["owner_id"])){
-            echo "<hr><button id=\"checkRankingButton\" class=\"btn btn-default btn-lg\" type=\"button\">Check Candidates Ranking</button>";
-          }
-        ?>
-        </div>
-        <br/><br/>
-        <?php
-          if(isset($_GET['status']) and $_GET['status'] === 'success' and isset($_GET['cv']))
-          {
-        ?>
-            <script>
-              alert('successfully uploaded!');
-            </script>
-            <label>File Uploaded Successfully...  <a href="../controller/download.php?id=<?php echo $_GET['cv'] ?>">Click here to view file.</a></label>
-        <?php
-          }
-          else if(isset($_GET['status']) and $_GET['status'] === 'fail')
-          {
-        ?>
-            <script>
-              alert('error while uploading file');
-            </script>
-            <label>Problem While File Uploading!</label>
-        <?php
-          }
-        ?>
-      </div>
-      
-      <div id="rankPane" style="display: none;">
-        <hr>
-        <table class="rankTable">
-          <tr class="rankLabel">
-            <td class="rankIndex">No.</td>
-            <td class="rankName">NAME</td>
-            <td class="rankPhone">PHONE</td>
-            <td class="rankEmail">EMAIL</td>
-            <td class="rankSummary">SUMMARY</td>
-            <td class="rankViewCV">CV</td>
-          </tr>
-          <?php
-            $index = 0;
-            while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-              $name = $row['cv_name'];
-              $phone = $row['cv_phone'];
-              $email = $row['cv_email'];
-              $summary = $row['cv_keyword'];
-              $id = $row['cv_id'];
-              $index++;
-              if ($index % 2 == 0) {
-                echo "<tr class=\"rankEntry evenLine\">";
-              } else {
-                echo "<tr class=\"rankEntry oddLine\">";
-              }
-              echo "
-                  <td class=\"rankIndex\">$index</td>
-                  <td class=\"rankName\"><a href=\"cvPage.php?cv_id=$id\" target=\"_blank\">$name</a></td>
-                  <td class=\"rankPhone\">$phone</td>
-                  <td class=\"rankEmail\">$email</td>
-                  <td class=\"rankSummary\">$summary</td>
-                  <td class=\"rankViewCV\"><a id=\"rankViewCVButton\" href=\"../controller/download.php?id=$id\" target=\"_blank\">View CV</a></td>
-                </tr>
-              ";
-            }
- 
-          ?>
-        </table>
-      </div>
+      <?php
+        require_once('tabbarView.php'); 
+        require_once('jobDescriptionView.php'); 
+        require_once('submitCVView.php');
+        require_once('rankingView.php');
+      ?>
     </div>
+
 
     <hr>
 
