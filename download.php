@@ -17,7 +17,7 @@ class PDF extends FPDF
 {
     function Header()
     {
-        global $title;
+        /*global $title;
         // Arial bold 15
         $this->SetFont('Arial','B',15);
         // Calculate width of title and position
@@ -32,7 +32,7 @@ class PDF extends FPDF
         // Title
         $this->Cell($w,9,$title,1,1,'C',true);
         // Line break
-        $this->Ln(10);
+        $this->Ln(10);*/
     }
 
     function Footer()
@@ -71,13 +71,13 @@ class PDF extends FPDF
         $this->Ln();
         // Mention in italics
         $this->SetFont('','I');
-        $this->Cell(0,5,'(end of excerpt)');
+        //$this->Cell(0,5,'(end of excerpt)');
     }
 
     function PrintChapter($num, $title, $file)
     {
         $this->AddPage();
-        $this->ChapterTitle($num,$title);
+        //$this->ChapterTitle($num,$title);
         $this->ChapterBody($file);
     }
 }

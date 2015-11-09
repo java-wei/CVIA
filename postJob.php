@@ -11,10 +11,14 @@ if(isset($_POST['submit'])){
 	$jobCompany = $_POST['jobCompany'];
 	$jobDescription = $_POST['jobDescription'];
 
+	if(strrpos($jobDescription, "'")) {
+  		$jobDescription = str_replace("'","\'", $jobDescription);
+  	}
 	$sql = "INSERT INTO ".JOB_TABLE." (owner_id, job_title, job_description, job_keyword, keyword_importance, job_company)
                 VALUES ('$user_id', '$jobName', '$jobDescription', '$keyword', '$importance', '$jobCompany');";
     $result = mysql_query($sql);
     // echo mysql_errno($connector) . ": " . mysql_error($connector). "\n";
+    // exit(0);
 }
 
 header('Location: jobPortal.php');	
@@ -23,3 +27,4 @@ header('Location: jobPortal.php');
 //include header template
 require('layout/header.php'); 
 ?>
+n

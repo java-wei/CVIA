@@ -44,8 +44,13 @@
       $userID = $_SESSION['id'];
     }
 
+<<<<<<< HEAD
     $_SESSION['location'] = "jobPage.php?job=$jobID";
 
+=======
+    $sql = "SELECT * FROM ".CV_TABLE." WHERE cv_job_id = ".$jobID;
+    $result = mysql_query($sql);
+>>>>>>> 12b5f00c0ab014fe11cb2747824b04758546c47d
   ?>
 
   <head>
@@ -174,7 +179,12 @@
           </tr>
           <tr class="oddLine">
             <td class="jtLabel">No. of Applicants</td>
-            <td>12</td>
+            <td>
+              <?php 
+                $numrows = mysql_num_rows($result);
+                echo $numrows;
+              ?>
+            </td>
           </tr>
         </table>
       </div>
@@ -228,22 +238,20 @@
             <td class="rankViewCV">CV</td>
           </tr>
           <?php
-            require_once('includes/config.php'); 
-
-            $jobID = $_GET["job"];
-            $sql = "SELECT * FROM ".CV_TABLE." WHERE cv_job_id = ".$jobID." ORDER BY cv_grade DESC";
-            $jobResult = mysql_query($sql);
-
             $index = 0;
-            while ($row = mysql_fetch_array($jobResult, MYSQL_ASSOC)) {
+            while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
               $name = $row['cv_name'];
               $phone = $row['cv_phone'];
               $email = $row['cv_email'];
               $summary = $row['cv_keyword'];
               $id = $row['cv_id'];
               $index++;
+              if ($index % 2 == 0) {
+                echo "<tr class=\"rankEntry evenLine\">";
+              } else {
+                echo "<tr class=\"rankEntry oddLine\">";
+              }
               echo "
-                 <tr class=\"rankEntry oddLine\">
                   <td class=\"rankIndex\">$index</td>
                   <td class=\"rankName\"><a href=\"cvPage.php?cv_id=$id\" target=\"_blank\">$name</a></td>
                   <td class=\"rankPhone\">$phone</td>
