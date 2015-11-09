@@ -1,5 +1,4 @@
 <?php
-//include config
 require_once('includes/config.php');
 
 //process login form if submitted
@@ -8,21 +7,21 @@ if(isset($_POST['submit'])){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	
+	$location = $_SESSION['location'];
+	if(strrpos($location, "?")) {
+		$connector = "&";
+	} else {
+		$connector = "?";
+	}
+
 	if($user->login($username,$password)){ 
 		$_SESSION['username'] = $username;
-		header('Location: index.php?action=loginSuccess');
-		exit;
-	
+		header('Location: '.$location.$connector.'action=loginSuccess');	
 	} else {
-		//$error[] = 'Wrong username or password or your account has not been activated.';
-		header('Location: index.php?action=loginFail');
-		exit;
+		header('Location: '.$location.$connector.'action=loginFail');
 	}
 
 }//end if submit
 
-
-//include header template
-require('layout/header.php'); 
 ?>
 

@@ -34,7 +34,7 @@
               // echo "<script>$(\"#blockMask\").fadeIn(\"slow\");</script>";
             break;
           case 'loginFail' :
-              echo "<h2 class='bg-success' id='loginSuccess'>Login Fail.</h2>";
+              echo "<h2 class='bg-success' id='loginSuccess'>Incorrect username or password.</h2>";
             break;
           case 'joined' :
             echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";
@@ -45,10 +45,15 @@
           case 'resetAccount':
             echo "<h2 class='bg-success'>Password changed, you may now login.</h2>";
             break;
+          case 'error':
+            $error = $_GET['error'];
+            echo "<h2 class='bg-success'>$error</h2>";
+            break;
         }
 
       }
 
+       $_SESSION['location'] = "index.php";
   ?>
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">

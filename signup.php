@@ -3,7 +3,14 @@
 require('includes/config.php'); 
 require_once('includes/class.phpmailer.php');
 
-                          
+
+$location = $_SESSION['location'];
+if(strrpos($location, "?")) {
+	$connector = "&";
+} else {
+	$connector = "?";
+}
+
 //if form has been submitted process it
 if(isset($_POST['submit'])){
 
@@ -92,9 +99,10 @@ if(isset($_POST['submit'])){
 						{
 						  echo "Message sent!";
 						}
-						// exit();
+			
+
 			//redirect to login page
-			header('Location: index.php?action=joined');
+			header('Location: '.$location.$connector.'action=joined');
 			exit;
 
 		//else catch the exception and show the error.
@@ -106,13 +114,8 @@ if(isset($_POST['submit'])){
 }
 
 if(isset($error)){
-    print_r($error);
+	header('Location: '.$location.$connector.'error=$error');
 }
 
 
-header('Location: index.php');
-exit;
-
-//include header template
-require('layout/header.php'); 
 ?>
