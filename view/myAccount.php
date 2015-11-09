@@ -33,7 +33,7 @@
           <button class="cancelButton"><img src="icons/cancel.png"></button>
         </div>
         <hr>
-        <form name="login" action="login.php" method="post">
+        <form name="login" action="loginController.php" method="post">
           <table class="popupFormTable">
             <tr>
               <td class="inputLabel">Username:</td>

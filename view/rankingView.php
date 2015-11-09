@@ -29,7 +29,7 @@
             <td class=\"rankPhone\">$phone</td>
             <td class=\"rankEmail\">$email</td>
             <td class=\"rankSummary\">$summary</td>
-            <td class=\"rankViewCV\"><a id=\"rankViewCVButton\" href=\"../controller/download.php?id=$id\" target=\"_blank\">View CV</a></td>
+            <td class=\"rankViewCV\"><a id=\"rankViewCVButton\" href=\"../controller/downloadCV.php?id=$id\" target=\"_blank\">View CV</a></td>
           </tr>
         ";
       }

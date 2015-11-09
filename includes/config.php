@@ -32,7 +32,7 @@ try {
 }
 
 $connector = mysql_connect(DBHOST,DBUSER,DBPASS) or die("Unable to connect");
-$selected = mysql_select_db("CViA", $connector) or die("Unable to connect");
+$selected = mysql_select_db(DBNAME, $connector) or die("Unable to connect");
 
 //include the user class, pass in the database connection
 include('../model/user.php');

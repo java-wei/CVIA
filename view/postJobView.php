@@ -4,7 +4,7 @@
       <button class="cancelButton"><img src="icons/cancel.png"></button>
     </div>
     <hr>
-    <form name="login" action="../controller/postJob.php" method="post">
+    <form name="login" action="../controller/postJobController.php" method="post">
       <table class="popupFormTable">
         <tr>
           <td class="inputLabel">Job Name:</td>

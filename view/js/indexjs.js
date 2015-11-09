@@ -50,7 +50,7 @@ $("#jobSubmitButton").click(function() {
 });
 
 $("#LogoutButton").click(function() {
-  window.location.href='../controller/logout.php';
+  window.location.href='../controller/logoutController.php';
 });
 
 $(".cancelButton").click(function() {

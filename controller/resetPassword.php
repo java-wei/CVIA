@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
 			));
 
 			//redirect to index page
-			header('Location: login.php?action=resetAccount');
+			header('Location: loginController.php?action=resetAccount');
 			exit;
 
 		//else catch the exception and show the error.

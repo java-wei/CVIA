@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
                         $mail->Password = "CS3219project";
                         $mail->FromName = 'CViA Team';
                         $mail->Subject = "Registration Confirmation";
-                        $mail->Body = "Thank you for registering at demo site.\n\n To activate your account, please click on this link:\n\n ".DIR."activate.php?x=$id&y=$activasion\n\n Regards Site Admin \n\n";
+                        $mail->Body = "Thank you for registering at demo site.\n\n To activate your account, please click on this link:\n\n ".DIR."activateUserAccount.php?x=$id&y=$activasion\n\n Regards Site Admin \n\n";
                         $mail->AddAddress($_POST['email']);                     
 
          				if(!$mail->Send())
