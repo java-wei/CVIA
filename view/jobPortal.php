@@ -11,6 +11,14 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/indexcss.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <!-- Load jQuery JS -->
+    <script src="js/jquery-1.9.1.js"></script>
+    <!-- Load jQuery UI Main JS  -->
+    <script src="js/jquery-ui.js"></script>
+    <!-- Load SCRIPT.JS which will create datepicker for input field  -->
+    <script src="script.js"></script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -94,6 +102,10 @@
             <tr>
               <td class="inputLabel">Company:</td>
               <td class="inputBox"><input name="jobCompany" size="14"/></td>
+            </tr>
+            <tr>
+              <td class="inputLabel">Due Date:</td>
+              <td class="inputBox"><input name="jobDueDate" type="text" id="datepicker" /></td>
             </tr>
             <tr>
               <td class="inputLabel">Description:</td>
@@ -229,7 +241,13 @@
 
             $count = 0;
             while( $row = mysql_fetch_assoc($jobResult) ){
-              if ($count % 2 == 0) {
+              $today = date("Y-m-d");
+              $today = intval(str_replace('-','', $today));
+              $dueDate = intval(str_replace('-','', $row['job_duedate']));
+
+              if ($today <= $dueDate) {
+                // job open
+                if ($count % 2 == 0) {
                 // oddLine
                 echo
                 "<tr class=\"jobEntry oddLine\">";
@@ -242,9 +260,10 @@
               "<td class=\"jobTitle\"><a href=\"jobPage.php?job=".$row["job_id"]."\" target=\"_blank\">".$row["job_title"]."</a></td>
               <td class=\"jobCompany\">".$row["job_company"]."</td>
               <td class=\"jobDescription\">".$row["job_description"]."</td>
-              <td class=\"jobStatus\">2015-2-11</td>
+              <td class=\"jobStatus\">".$row['job_duedate']."</td>
               </tr>";
               $count = $count + 1;
+              } 
             }
             echo "</table></div>";
         }
@@ -299,8 +318,6 @@
       </div>
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/indexjs.js"></script>
