@@ -19,7 +19,10 @@
     <![endif]-->
   </head>
   <body>
-    <?php require_once('../includes/config.php'); ?>
+    <?php
+      require_once('../controller/processAction.php'); 
+      $_SESSION['location'] = "../view/aboutUs.php";
+    ?>
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Login</p>
@@ -41,29 +44,6 @@
         </form>
         <p class="assistantButton"><a href='reset.php'>Forgot your Password?</a></p>
         <p class="assistantButton"><a href='signup.php'>Create Account</a></p>
-    </div>
-
-    <div id="postJobBox" style="display:none;"> 
-        <div style="position: relative;">
-          <p class="popupHead">Post New Job</p>
-          <button class="cancelButton"><img src="icons/cancel.png"></button>
-        </div>
-        <hr>
-        <form name="login" action="" method="post">
-          <table class="popupFormTable">
-            <tr>
-              <td class="inputLabel">Job Name:</td>
-              <td class="inputBox"><input name="jobname" size="14"/></td>
-            </tr>
-            <tr>
-              <td class="inputLabel">Job Description:</td>
-              <td><button id="uploadDescriptionButton" type="button" class="btn btn-default btn-lg" style="width: 80%;">Upload Job Description</button></td>
-            </tr>
-          </table>
-        <input type="file" id="myJob" multiple onchange="myFunctionJob()" style="display:none;">
-        <hr>
-        <center><input type="submit" name="submit" class="btn btn-default btn-lg" value="Post" id="jobSubmitButton"/></center>
-      </form>
     </div>
 
     <div id="registerBox" style="display:none;"> 
@@ -150,9 +130,6 @@
 
       <hr>
 
-      <div class="jobSection">
-        <p id="demo"></p>
-      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

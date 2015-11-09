@@ -1,18 +1,3 @@
-<?php 
-  require_once('../includes/config.php'); 
-  if( !$user->is_logged_in() ){ 
-    header('Location: index.php');
-  } 
-
-  $connector = mysql_connect(DBHOST,DBUSER,DBPASS)
-    or die("Unable to connect");
-  //echo "Connections are made successfully::";
-  $selected = mysql_select_db("CViA", $connector)
-    or die("Unable to connect");
-
-  $userID = $_SESSION['id'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,6 +19,14 @@
     <![endif]-->
   </head>
   <body>
+    <?php 
+      require_once('../includes/config.php'); 
+      require_once('../controller/processAction.php'); 
+      if( !$user->is_logged_in() ){ 
+        header('Location: index.php');
+      } 
+      $userID = $_SESSION['id'];
+    ?>
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Login</p>

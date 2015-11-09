@@ -1,40 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php
-      require_once('../includes/config.php'); 
-
-      if(isset($_GET['action'])) {
-
-        //check the action
-        switch ($_GET['action']) {
-          case 'active':
-            echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
-            break;
-          case 'login' :
-            //echo "<h2 class='bg-success' id='loginSuccess'>Login successfully.</h2>";
-              echo "<script>$(\"#blockMask\").fadeIn(\"slow\");</script>";
-            break;
-          case 'joined' :
-            echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";
-            break;
-          case 'reset':
-            echo "<h2 class='bg-success'>Please check your inbox for a reset link.</h2>";
-            break;
-          case 'resetAccount':
-            echo "<h2 class='bg-success'>Password changed, you may now login.</h2>";
-            break;
-        }
-      }
-
-    $peopleID = $_GET["cv_id"];
-    $tableName = 'CV';
-    $sql = "SELECT * FROM ".$tableName." WHERE cv_id = ".$peopleID;
-    $cvResult = mysql_query($sql);
-    $num_rows = mysql_num_rows($cvResult);
-    $row = mysql_fetch_assoc($cvResult);
-    $userID = $_SESSION['id'];
-  ?>
-
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,6 +19,17 @@
     <![endif]-->
   </head>
   <body>
+    <?php
+      require_once('../controller/processAction.php'); 
+
+      $peopleID = $_GET["cv_id"];
+      $tableName = 'CV';
+      $sql = "SELECT * FROM ".$tableName." WHERE cv_id = ".$peopleID;
+      $cvResult = mysql_query($sql);
+      $num_rows = mysql_num_rows($cvResult);
+      $row = mysql_fetch_assoc($cvResult);
+      $userID = $_SESSION['id'];
+    ?>
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Login</p>

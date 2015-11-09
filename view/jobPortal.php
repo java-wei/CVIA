@@ -20,42 +20,9 @@
   </head>
   <body>
     <?php
-      require_once('../includes/config.php');
-
-      if(isset($_GET['action'])) {
-
-        //check the action
-        switch ($_GET['action']) {
-          case 'active':
-            echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
-            break;
-          case 'loginSuccess' :
-              echo "<h2 class='bg-success' id='loginSuccess'>Login successfully.</h2>";
-              // echo "<script>$(\"#blockMask\").fadeIn(\"slow\");</script>";
-            break;
-          case 'loginFail' :
-              echo "<h2 class='bg-success' id='loginSuccess'>Incorrect username or password.</h2>";
-            break;
-          case 'joined' :
-            echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";
-            break;
-          case 'reset':
-            echo "<h2 class='bg-success'>Please check your inbox for a reset link.</h2>";
-            break;
-          case 'resetAccount':
-            echo "<h2 class='bg-success'>Password changed, you may now login.</h2>";
-            break;
-          case 'error':
-            $error = $_GET['error'];
-            echo "<h2 class='bg-success'>$error</h2>";
-            break;
-        }
-
-      }
-
+      require_once('../controller/processAction.php'); 
       $_SESSION['location'] = "../view/jobPortal.php";
     ?>  
-
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Login</p>
@@ -292,11 +259,6 @@
       </div>
 
       <hr>
-
-      <div class="jobSection">
-        <input type="file" id="myFile" multiple id="SubmitCVButton" onchange="myFunctionCV()" style="display:none;">
-        <p id="demo"></p>
-      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

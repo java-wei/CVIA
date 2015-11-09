@@ -1,55 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php
-    require_once('../includes/config.php'); 
-
-    if(isset($_GET['action'])) {
-
-        //check the action
-        switch ($_GET['action']) {
-          case 'active':
-            echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
-            break;
-          case 'loginSuccess' :
-              echo "<h2 class='bg-success' id='loginSuccess'>Login successfully.</h2>";
-              // echo "<script>$(\"#blockMask\").fadeIn(\"slow\");</script>";
-            break;
-          case 'loginFail' :
-              echo "<h2 class='bg-success' id='loginSuccess'>Incorrect username or password.</h2>";
-            break;
-          case 'joined' :
-            echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";
-            break;
-          case 'reset':
-            echo "<h2 class='bg-success'>Please check your inbox for a reset link.</h2>";
-            break;
-          case 'resetAccount':
-            echo "<h2 class='bg-success'>Password changed, you may now login.</h2>";
-            break;
-          case 'error':
-            $error = $_GET['error'];
-            echo "<h2 class='bg-success'>$error</h2>";
-            break;
-        }
-
-      }
-
-
-    $jobID = $_GET["job"];
-    $sql = "SELECT * FROM ".JOB_TABLE." WHERE job_id = ".$jobID;
-    $jobResult = mysql_query($sql);
-    $num_rows = mysql_num_rows($jobResult);
-    $row = mysql_fetch_assoc($jobResult);
-    if ($user->is_logged_in()){
-      $userID = $_SESSION['id'];
-    }
-
-    $_SESSION['location'] = "../view/jobPage.php?job=$jobID";
-
-    $sql = "SELECT * FROM ".CV_TABLE." WHERE cv_job_id = ".$jobID;
-    $result = mysql_query($sql);
-  ?>
-
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,6 +19,25 @@
     <![endif]-->
   </head>
   <body>
+    <?php
+      require_once('../controller/processAction.php'); 
+
+
+      $jobID = $_GET["job"];
+      $sql = "SELECT * FROM ".JOB_TABLE." WHERE job_id = ".$jobID;
+      $jobResult = mysql_query($sql);
+      $num_rows = mysql_num_rows($jobResult);
+      $row = mysql_fetch_assoc($jobResult);
+      if ($user->is_logged_in()){
+        $userID = $_SESSION['id'];
+      }
+
+      $_SESSION['location'] = "../view/jobPage.php?job=$jobID";
+
+      $sql = "SELECT * FROM ".CV_TABLE." WHERE cv_job_id = ".$jobID;
+      $result = mysql_query($sql);
+    ?>
+    
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Login</p>
