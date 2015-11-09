@@ -137,7 +137,7 @@
           </tr>
           <tr class="oddLine">
             <td class="jtLabel">Close Date</td>
-            <td>2015-2-11</td>
+            <td><?php echo $row["job_duedate"]?></td>
           </tr>
           <tr class="evenLine">
             <td class="jtLabel">Key Requirement</td>

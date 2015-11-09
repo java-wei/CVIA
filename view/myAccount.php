@@ -163,6 +163,7 @@
                   $jobResult = mysql_query($sql);
                   $num_rows = mysql_num_rows($jobResult);
                   echo $num_rows; 
+                  $today = date("Y-m-d");  
                 ?>
               </td>
             </tr>
@@ -200,10 +201,19 @@
               echo
               "<td class=\"myJobPosition\"><a href=\"jobPage.php?job=".$row["job_id"]."\" target=\"_blank\">".$row["job_title"]."</a></td>
               <td class=\"myJobDescription\">".$row["job_description"]."</td>
-              <td class=\"myJobDate\">2015-9-30</td>
+              <td class=\"myJobDate\">".$row['job_postdate']."</td>
               <td class=\"myJobCandidates\">".$numrows."</td>
-              <td class=\"myJobStatus\">Open</td>
-            </tr>";
+              <td class=\"myJobStatus\">";
+
+              $today = intval(str_replace('-','', $today));
+              $dueDate = intval(str_replace('-','', $row['job_duedate']));
+
+              if ($today <= $dueDate) {
+                echo "Open";
+              } else {
+                echo "Closed";
+              }
+              echo "</td></tr>";
               $count = $count + 1;
             }
             ?>
