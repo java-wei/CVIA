@@ -59,7 +59,7 @@
     <div id="loginBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Login</p>
-          <button class="cancelButton"><img src="files/cancel.png"></button>
+          <button class="cancelButton"><img src="icons/cancel.png"></button>
         </div>
         <hr>
         <form name="login" action="../controller/login.php" method="post">
@@ -82,7 +82,7 @@
     <div id="postJobBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Post New Job</p>
-          <button class="cancelButton"><img src="../files/cancel.png"></button>
+          <button class="cancelButton"><img src="icons/cancel.png"></button>
         </div>
         <hr>
         <form name="login" action="../controller/postJob.php" method="post">
@@ -121,7 +121,7 @@
     <div id="registerBox" style="display:none;"> 
         <div style="position: relative;">
           <p class="popupHead">Register</p>
-          <button class="cancelButton"><img src="../files/cancel.png"></button>
+          <button class="cancelButton"><img src="icons/cancel.png"></button>
         </div>
         <hr>
         <form name="register" action="../controller/signup.php" method="post">
