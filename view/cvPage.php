@@ -21,14 +21,12 @@
   <body>
     <?php
       require_once('../controller/processAction.php'); 
+      require_once('../model/db.php'); 
 
       $peopleID = $_GET["cv_id"];
-      $tableName = 'CV';
-      $sql = "SELECT * FROM ".$tableName." WHERE cv_id = ".$peopleID;
-      $cvResult = mysql_query($sql);
-      $num_rows = mysql_num_rows($cvResult);
-      $row = mysql_fetch_assoc($cvResult);
       $userID = $_SESSION['id'];
+      $result = dbSelect(CV_TABLE, "WHERE cv_id = $peopleID");
+      $row = mysql_fetch_assoc($result);
 
       require_once('loginView.php'); 
       require_once('registerView.php'); 

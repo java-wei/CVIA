@@ -5,8 +5,7 @@ include('../includes/config.php');
 function dbSelect($dbName, $criteria) {
 	$sql = "SELECT * FROM $dbName $criteria";
 	$result = mysql_query($sql);
-	$row = mysql_fetch_assoc($result);
-	return $row;
+	return $result;
 }
 
 function dbUpdate($dbName, $fields, $criteria) {

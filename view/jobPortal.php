@@ -28,6 +28,7 @@
   <body>
     <?php
       require_once('../controller/processAction.php'); 
+      require_once('../model/db.php'); 
       $_SESSION['location'] = "../view/jobPortal.php";
       require_once('loginView.php'); 
       require_once('registerView.php'); 

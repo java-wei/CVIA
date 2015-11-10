@@ -8,7 +8,8 @@ $CV_id = $_GET['cv'];
 $job_id = $_GET['job'];
 
 # Fetch the job keywords
-$row = dbSelect(JOB_TABLE, "WHERE job_id = ".$job_id);
+$result = dbSelect(JOB_TABLE, "WHERE job_id = ".$job_id);
+$row = mysql_fetch_assoc($result);
 $job_keyword= $row['job_keyword'];
 $job_keyword_string = explode(",", $job_keyword);
 

@@ -21,21 +21,16 @@
   <body>
     <?php
       require_once('../controller/processAction.php'); 
-
+      require_once('../model/db.php'); 
 
       $jobID = $_GET["job"];
-      $sql = "SELECT * FROM ".JOB_TABLE." WHERE job_id = ".$jobID;
-      $jobResult = mysql_query($sql);
-      $num_rows = mysql_num_rows($jobResult);
-      $row = mysql_fetch_assoc($jobResult);
+      $result = dbSelect(JOB_TABLE, "WHERE job_id = $jobID");
+      $row = mysql_fetch_assoc($result);
       if ($user->is_logged_in()){
         $userID = $_SESSION['id'];
       }
-
       $_SESSION['location'] = "../view/jobPage.php?job=$jobID";
-
-      $sql = "SELECT * FROM ".CV_TABLE." WHERE cv_job_id = ".$jobID;
-      $result = mysql_query($sql);
+      $result = dbSelect(CV_TABLE, "WHERE cv_job_id = $jobID");
 
       require_once('loginView.php'); 
       require_once('registerView.php'); 
