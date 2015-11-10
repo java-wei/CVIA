@@ -1,6 +1,5 @@
 <?php
-      $sql = "SELECT * FROM members WHERE memberID = $userID";
-      $userInfo = mysql_query($sql);
+      $userInfo = dbSelect(USER_TABLE, "WHERE memberID = $userID");
       $row = mysql_fetch_assoc($userInfo);
 ?>
 
@@ -19,8 +18,7 @@
       <td class="label">No. of Job Posted:</td>
       <td class="info">
         <?php 
-          $sql = "SELECT * FROM Job WHERE owner_id = $userID";
-          $jobResult = mysql_query($sql);
+          $jobResult = dbSelect(JOB_TABLE, "WHERE owner_id = $userID");
           $num_rows = mysql_num_rows($jobResult);
           echo $num_rows; 
           $today = date("Y-m-d");  

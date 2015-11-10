@@ -12,8 +12,8 @@
     $count = 0;
     while( $row = mysql_fetch_assoc($jobResult) ){
 
-      $sql = "SELECT * FROM ".CV_TABLE." WHERE cv_job_id = ".$row["job_id"];
-      $result = mysql_query($sql);
+      $jobID = $row["job_id"];
+      $result = dbSelect(CV_TABLE, "WHERE cv_job_id = $jobID");
       $numrows = mysql_num_rows($result);
 
       if ($count % 2 == 0) {
