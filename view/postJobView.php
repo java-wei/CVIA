@@ -27,9 +27,9 @@
           <td class="inputBox"><input id="tagInputBox" size="14"/></td>
           <td>
             <select id="importanceSelect">
-              <option value="1">Very Important</option>
+              <option value="3">Very Important</option>
               <option value="2" selected>Important</option>
-              <option value="3">Less Important</option>
+              <option value="1">Less Important</option>
             </select>
           </td>
           <td><button id="addKeywordButton" type="button" name="button" class="btn btn-default btn-lg">Add</button></td>
