@@ -46,7 +46,8 @@ $("#jobSubmitButton").click(function() {
   $("#blockMask").fadeOut("slow");
 
   //$.post('test.php', {variable: "hellp"});
-  document.cookie = "variable="+"askdhfkjashdfjklashf";
+  document.cookie = "keyword="+ tagArray +"; path=/";
+  document.cookie = "importance="+ tagImportance +"; path=/";
 });
 
 $("#LogoutButton").click(function() {
@@ -102,3 +103,15 @@ $("#addKeywordButton").click(function() {
   }    
   }
 })
+
+$(document).ready(
+  /* This is the function that will get executed after the DOM is fully loaded */
+  function () {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,//this option for allowing user to select month
+      changeYear: true, //this option for allowing user to select from year range
+      dateFormat: "yy-mm-dd"
+    });
+  }
+
+);
