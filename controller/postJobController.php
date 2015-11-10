@@ -1,5 +1,5 @@
 <?php
-require_once('../includes/config.php');
+require_once('../model/db.php');
 
 $keyword = $_COOKIE['keyword'];
 $importance = $_COOKIE['importance'];
@@ -15,10 +15,10 @@ if(isset($_POST['submit'])){
 
 	if(strrpos($jobDescription, "'")) {
   		$jobDescription = str_replace("'","\'", $jobDescription);
-  	}
-	$sql = "INSERT INTO ".JOB_TABLE." (owner_id, job_title, job_description, job_keyword, keyword_importance, job_company, job_duedate, job_postdate)
-                VALUES ('$user_id', '$jobName', '$jobDescription', '$keyword', '$importance', '$jobCompany', '$jobDueDate', '$todayDate');";
-  $result = mysql_query($sql);
+  }
+
+  dbInsert(JOB_TABLE, "(owner_id, job_title, job_description, job_keyword, keyword_importance, job_company, job_duedate, job_postdate)
+                VALUES ('$user_id', '$jobName', '$jobDescription', '$keyword', '$importance', '$jobCompany', '$jobDueDate', '$todayDate');");
     // echo mysql_errno($connector) . ": " . mysql_error($connector). "\n";
     // exit(0);
 }

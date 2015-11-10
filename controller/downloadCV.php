@@ -1,10 +1,8 @@
 <?php
-require_once('../includes/config.php'); 
+require_once('../model/db.php'); 
 require_once('../includes/fpdf17/fpdf.php'); 
 
-$sql = "SELECT * FROM ".CV_TABLE." WHERE cv_id = ".$_GET['id'];
-$result = mysql_query($sql);
-$row = mysql_fetch_assoc($result);
+$row = dbSelect(CV_TABLE, "WHERE cv_id = ".$_GET['id']);
 $cv_description = $row['cv_description'];
 
 $text_file = "testFile.txt";

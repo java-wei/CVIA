@@ -2,17 +2,13 @@
 <html>
 <body>
 <?php 
-require_once('../includes/config.php'); 
+require_once('../model/db.php'); 
 
 $CV_id = $_GET['cv'];
 $job_id = $_GET['job'];
 
 # Fetch the job keywords
-$cv_description = $_SESSION['cv_description'][$CV_id];
-$sql = "SELECT * FROM Job WHERE job_id = ".$job_id;
-$result = mysql_query($sql);
-$row = mysql_fetch_assoc($result);
-
+$row = dbSelect(JOB_TABLE, "WHERE job_id = ".$job_id);
 $job_keyword= $row['job_keyword'];
 $job_keyword_string = explode(",", $job_keyword);
 
@@ -27,10 +23,10 @@ foreach ($job_keyword_string as $index => $keyword) {
 }
 
 # Extract the cv information
+$cv_description = $_SESSION['cv_description'][$CV_id];
 $cv_email = findEmail($cv_description);
 $cv_phone = findPhoneNumber($cv_description);
 $cv_name = findName($cv_description);
-$cv_description = $_SESSION['cv_description'][$CV_id];
 
 $result = matchingJobAndCV($cv_description, $job_keyword_arr);
 foreach ($result as $key => $value) {
@@ -41,10 +37,8 @@ $percentage = round($grade / $fullMark * 100, 2);
 
 
 # Update the cv information in database
-$sql = "UPDATE ".CV_TABLE." SET cv_keyword = '$matched_keyword', cv_name = '$cv_name', cv_phone = '$cv_phone',
-        cv_email = '$cv_email', cv_grade = '$percentage' WHERE cv_id = '$CV_id';";
-
-$result = mysql_query($sql);
+dbUpdate(CV_TABLE, "cv_keyword = '$matched_keyword', cv_name = '$cv_name', cv_phone = '$cv_phone',
+        cv_email = '$cv_email', cv_grade = '$percentage'",  "WHERE cv_id = '$CV_id'");
 
 
 

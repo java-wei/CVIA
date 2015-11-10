@@ -1,6 +1,6 @@
 <?php
 require_once('pdfExtractor.php'); 
-require_once('../includes/config.php'); 
+require_once('../model/db.php'); 
 
 $job_id = $_GET['jobID'];
 
@@ -21,15 +21,9 @@ if(isset($_POST['btn-upload']))
 
 	move_uploaded_file($file_loc,$folder.$file);
 	$cv_description = escapeQuote(extractPDF(dirname(__FILE__)."/CVs/".$file));
-	$sql = "INSERT INTO ".CV_TABLE." (cv_description, cv_job_id)
-                VALUES ('$cv_description', '$job_id');";
-  $result = mysql_query($sql);
-  // echo mysql_errno($connector) . ": " . mysql_error($connector) . "\n";
-  // var_dump($result, dirname(__FILE__)."/files/CVs/", $cv_description);
-  // exit(0);
-  $query = mysql_query("SELECT @@IDENTITY AS 'Identity';");
-  $row = mysql_fetch_assoc($query);
-  $CV_id = $row['Identity'];
+  dbInsert(CV_TABLE, "(cv_description, cv_job_id)
+                VALUES ('$cv_description', '$job_id');");
+  $CV_id = getLastQueryID();
   $_SESSION['cv_description'][$CV_id] = $cv_description;
 
   move_uploaded_file($file_loc,$folder.$file);
